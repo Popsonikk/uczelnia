@@ -1,0 +1,33 @@
+1.	Select imie,nazwisko from czytelnicy where lower(nazwisko) like 'jasińsk_';
+2.	UPDATE czytelnicy set nazwisko=initcap(nazwisko);
+3.	Select concat(concat (concat(concat(concat(concat(upper(SUBSTR(czytelnicy.imie,1,1)) , '.' ), czytelnicy.nazwisko),' wypozyczyl ksiazke ')
+, ksiazki.tytul), ' w dniu '), wypozyczenia.data_w ) as polecenie from czytelnicy ,wypozyczenia ,ksiazki where czytelnicy.nr_czyt=wypozyczenia.wyp_czyt and wypozyczenia.wyp_ks=ksiazki.nr_ks;
+4.	  Select replace ('Wczoraj wysłałem e-mail. Dzisiaj ponownie wysłałem e-mail. Na żaden e-mail nie dostałem odpowiedzi.','e-mail','wiadomosc')as polecenie from dual;
+5.	 Select nr_czyt, imie, INITCAP(substr(nazwisko,2))as nazwisko from czytelnicy; 
+6.	SELECT concat(concat(concat(concat(concat('Jabłka ',round(2.749999,2)),', Cytryny '),round(8.111111,2)),', Pomarańcze '),round(3.273456,2))as polecenie FROM dual;
+7.	SELECT concat(concat(concat(concat(concat('Jabłka ',floor(2.749999)),', Cytryny '),floor(8.111111)),', Pomarańcze '),floor(3.273456))as polecenie FROM dual;
+8.	SELECT concat(concat(concat(concat(concat('Jabłka ',ceil(2.749999)),', Cytryny '),ceil(8.111111)),', Pomarańcze '),ceil(3.273456))as polecenie FROM dual;
+9.	Select sqrt(3.14159) from dual;
+10.	Select imie,nazwisko,nr_czyt from czytelnicy WHERE MOD(Nr_czyt, 2) = 0;
+11. 	Select sysdate from dual;
+12.	SELECT GETDATE( ) AS Aktualna_data from dual;
+13. 	Select weekday (2021-05-03,2) from dual;
+SELECT To_char(TO_DATE('2021/05/03'),'day') FROM dual;
+14.	Select czytelnicy.imie,czytelnicy.nazwisko ,wypozyczenia.data_w+14 as data_zwrotu FROM czytelnicy JOIN wypozyczenia on czytelnicy.nr_czyt=wypozyczenia.wyp_czyt where wypozyczenia.data_z is null;
+15. 	Select datediff(26-02-2021,03-05-2021) from dual;
+
+Zad 2
+	R = (A, B, C, D, E, F, G, H, I, J, K, L)
+
+	
+	2 postać
+	
+ A →  I, J,E,K,D
+ B →  G,H,F
+ A,B → C, L
+	3 postać
+ A,B → C, L
+ A → D,E,K
+ B → F
+ F → G,H
+ D → I, J

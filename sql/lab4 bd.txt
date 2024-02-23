@@ -1,0 +1,18 @@
+/*1*/ SELECT Czytelnicy.imie,Czytelnicy.nazwisko from Czytelnicy join wypozyczenia on czytelnicy.nr_czyt=wypozyczenia.wyp_czyt 
+where wypozyczenia.data_w BETWEEN '2020-05-01' AND '2020-06-30' order by czytelnicy.nazwisko;
+/*2*/ SELECT Czytelnicy.imie,Czytelnicy.nazwisko from Czytelnicy join wypozyczenia on czytelnicy.nr_czyt=wypozyczenia.wyp_czyt
+where wypozyczenia.data_w BETWEEN '2020-01-01' AND '2020-12-31' GROUP BY czytelnicy.nazwisko,czytelnicy.imie HAVING COUNT(wypozyczenia.wyp_czyt)>3 ;
+/*3*/ SELECT Czytelnicy.imie,Czytelnicy.nazwisko, COUNT (wypozyczenia.wyp_czyt) AS "Wypozyczone kziazki" from Czytelnicy join wypozyczenia on czytelnicy.nr_czyt=wypozyczenia.wyp_czyt
+where wypozyczenia.data_w BETWEEN '2020-01-01' AND '2020-12-31' GROUP BY czytelnicy.nazwisko,czytelnicy.imie order by  COUNT (wypozyczenia.wyp_czyt) DESC;
+/*4*/ SELECT imie,nazwisko from  Czytelnicy WHERE nr_czyt NOT IN (SELECT wyp_czyt FROM Wypozyczenia where data_w BETWEEN '2020-01-01' AND '2020-12-31'); 
+/*5*/ SELECT Czytelnicy.imie,Czytelnicy.nazwisko from Czytelnicy join wypozyczenia on czytelnicy.nr_czyt=wypozyczenia.wyp_czyt join ksiazki on ksiazki.nr_ks=wypozyczenia.wyp_ks where ksiazki.tytul='Pan Tadeusz';
+ /*6*/ SELECT Czytelnicy.imie,Czytelnicy.nazwisko from Czytelnicy join wypozyczenia on czytelnicy.nr_czyt=wypozyczenia.wyp_czyt where  Wypozyczenia.data_z is NULL and Sysdate- wypozyczenia.data_w >14;
+/*7*/ SELECT Czytelnicy.imie,Czytelnicy.nazwisko,czytelnicy.nr_czyt from Czytelnicy join wypozyczenia on czytelnicy.nr_czyt=wypozyczenia.wyp_czyt 
+where  wypozyczenia.data_z-wypozyczenia.data_w >14  or (Wypozyczenia.data_z is NULL and Sysdate- wypozyczenia.data_w >14);
+/*8*/ CREATE TABLE ByliCzytelnicy( nr_czyt INTEGER NOT NULL,nazwisko VARCHAR (35),imie VARCHAR(30),adres VARCHAR(200),PRIMARY KEY (nr_czyt)); 
+INSERT INTO ByliCzytelnicy (nr_czyt, nazwisko, imie, adres)
+VALUES (SELECT nr_czyt,nazwisko,imie ,adres FROM Czytelnicy WHERE nr_czyt NOT IN (SELECT wyp_czyt FROM Wypozyczenia where data_w <'2020-01-01' ));
+/*9*/ SELECT Czytelnicy.imie,Czytelnicy.nazwisko from Czytelnicy join wypozyczenia on czytelnicy.nr_czyt=wypozyczenia.wyp_czyt where  Wypozyczenia.data_z is NULL and Sysdate- wypozyczenia.data_w >14;
+/*10*/SELECT nr_czyt, nazwisko, imie FROM Czytelnicy WHERE imie = (SELECT imie FROM Czytelnicy WHERE nazwisko = 'Kowalski');
+/*11*/SELECT Distinct Czytelnicy.imie , Czytelnicy.nazwisko, czytelnicy.nr_czyt from Czytelnicy, Wypozyczenia where Czytelnicy.Nr_czyt = Wypozyczenia.wyp_czyt ;
+/*12*/  SELECT Distinct Czytelnicy.imie , Czytelnicy.nazwisko  ,Czytelnicy.nr_czyt from Czytelnicy, Wypozyczenia where  nr_czyt NOT IN (SELECT wyp_czyt FROM Wypozyczenia  ) ;

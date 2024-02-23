@@ -1,0 +1,12 @@
+
+SELECT emp.Last_name , emp.first_name, dept.name from emp, dept ;
+SELECT emp.Last_name , emp.first_name, dept.name from emp, dept  WHERE emp.dept_id=dept.id;
+SELECT region.name,dept.name from region JOIN dept on region.id = dept.region_id ORDER by region.name;
+UPDATE emp SET dept_id = NULL WHERE dept_id IN (41, 42, 43, 44, 45);
+COMMIT;
+SELECT emp.Last_name , emp.first_name, dept.name from emp  join dept  on emp.dept_id=dept.id;
+Select dept.name ,SUM(emp.salary) from dept  join emp on emp.dept_id=dept.id group by dept.name  ;
+Select dept.name ,SUM(emp.salary) from dept  left join emp on emp.dept_id=dept.id group by dept.name  ;
+Select dept.name ,NVL(SUM(emp.salary),0) from dept  left join emp on emp.dept_id=dept.id group by dept.name  ;
+Select dept.name ,NVL(SUM(emp.salary),0) from dept  right join emp on emp.dept_id=dept.id group by dept.name  ;
+Select dept_id ,NVL(SUM(emp.salary),0) from  emp where dept_id is null  group by dept_id  ;

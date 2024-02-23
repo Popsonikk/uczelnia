@@ -1,0 +1,3 @@
+Numer Zestawu 137
+J A+ B- = 3.512mA
+J A- B+ = 13.520mA
