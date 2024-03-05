@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="=en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Kalkulator</title> 
+    <style>
+       
+        .grid-container 
+        {
+            display: grid; /*definicja tabeli*/
+            grid-template-columns: auto auto auto auto;/*4 kolumny*/
+            grid-template-rows: auto auto auto auto auto auto;/*6 wierszy*/
+            gap: 10px; /*odległość między elementami*/
+            justify-content: center; /* centrowanie tabeli*/
+          
+        }
+        .buttonStyle
+        {
+            width: 50px;
+            height: 50px;
+            border-color:  #38598b;
+            background-color: #e7eaf6;
+            font-size: large;
+        }
+
+        .textStyle
+        {
+            height: 50px;
+            width: 230px;
+            border-color: #113f67;
+            grid-column: span 4; /*zajmuhe 3 kolumny*/
+
+        }
+
+
+    </style>
+    <script>
+        function gen()
+        {
+            const main=document.getElementById("main")
+            
+            const text=document.createElement("textarea")
+            
+            text.setAttribute("id","text")
+            text.classList.add("textStyle")
+            main.appendChild(text)
+            createButton(6,2,0)
+            let n=1;
+            for(let i=5;i>2;i--)
+            {
+                for(let j=1;j<4;j++)
+                {
+                    createButton(i,j,n)
+                    n++
+                    
+                }
+            }
+            createButton(6,1,".")
+            createButton(6,3,"=")
+            createButton(6,4,"+")
+            createButton(5,4,"-")
+            createButton(4,4,"*")
+            createButton(3,4,"/")
+            createButton(2,1,"C")
+            createButton(2,3,"<-")
+            const b1=document.getElementById("bC")
+            b1.style.gridColumn="span 2"
+            b1.style.width="110px"
+       
+            main.removeChild(b1)
+            main.appendChild(b1)
+
+            const b2=document.getElementById("b<-")
+            b2.style.gridColumn="span 2"
+            b2.style.width="110px"
+       
+            main.removeChild(b2)
+            main.appendChild(b2)
+            
+
+
+            
+        }
+        function show()
+        {
+            alert(this.dataset.value)
+        }
+        function createButton(x,  y , n)
+        {
+            const main=document.getElementById("main")
+            const button= document.createElement("button")
+            button.innerHTML=n
+            button.onclick=show
+            button.classList.add("buttonStyle")
+            button.dataset.value=n
+            button.setAttribute("id","b"+n)
+            button.style.gridColumn=y
+            button.style.gridRow=x
+            main.appendChild(button)
+        }
+    </script>
+</head>
+<body onload="gen()">
+    <div id="main" class="grid-container"> </div>
+</body>
+</html>
