@@ -5,47 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Kalkulator</title> 
     <style>
-        .window
-        {
+        .window {
             display: flex; /*mozliwość przesuwania elementów względem osi*/
             justify-content: center; /* centrowanie tabeli*/
-            padding: 25px;
-            gap: 50px;
+            padding: 25px; /* marginesy*/
+            gap: 50px; /*ogległość elementów w środku kontenera*/
+            max-height:380px;
+            
+            
         }
-
-        .border
-        {
+ 
+        .border{
             display: block;
             border: 3px solid black;
             padding: 10px;
+            width: 150px;
+            text-align: center;
+            overflow: auto;
            
         }
-    
-        .grid-container 
-        {
+        .grid-container  {
             display: inline-grid; /*definicja tabeli z obwódką*/
             grid-template-columns: auto auto auto auto;/*4 kolumny*/
             grid-template-rows: auto auto auto auto auto auto;/*6 wierszy*/
             gap: 10px; /*odległość między elementami*/
-            
+           
             border: 3px solid black;
             padding: 10px;
-            background-color: lightgray;
-            
-          
+            background-color: lightgray;  
         }
-        
-        .buttonStyle
-        {
+        .buttonStyle{
             width: 50px;
             height: 50px;
             border-color:  #38598b;
             background-color: #e7eaf6;
             font-size: large;
         }
-
-        .textStyle
-        {
+        .textStyle {
             height: 50px;
             width: 230px;
             border-color: #113f67;
@@ -54,19 +50,16 @@
             text-align: right;
             font-size: x-large;
             line-height:50px;
-
         }
       
-
-
     </style>
     <script>
         function gen()
         {
             const main=document.getElementById("main")
-          
             const storage=document.createElement("text")
             storage.setAttribute("id","storage")
+            storage.value=""
             document.body.appendChild(storage)
 
             /*const text= document.createElement('input');
@@ -108,22 +101,55 @@
             b2.onclick=deleteOne
            
             const bplus=document.getElementById("b+")
-            bplus.onclick=add
-            
-            
+            bplus.onclick=  function(){
+                doMath("+");
+            };
+
+            const bm=document.getElementById("b-")
+            bm.onclick=  function(){
+                doMath("-");
+            };
+
+            const br=document.getElementById("b*")
+            br.onclick=  function(){
+                doMath("*");
+            };
+
+            const bd=document.getElementById("b/")
+            bd.onclick=  function(){
+                doMath("/");
+            };
+            const be=document.getElementById("b=")
+            be.onclick=eq
+                   
         }
         function setValue()
         {
             const text=document.getElementById("text")
-            const s=text.value
-            text.value=s+this.dataset.value    
+            const s=document.getElementById("storage")
+
+            
+            const str=text.value
+            if(str==""&&this.dataset.value==".")
+            {
+                addToLog("błędny znak")
+                return
+            }
+            else if(s.value=="=")
+            {
+                s.value=""
+                text.value=this.dataset.value 
+                return
+            }
+            text.value=str+this.dataset.value    
         }
         function clear()
         {
             const text=document.getElementById("text")
             const s=document.getElementById("storage")
             text.value=""   
-            s.value=""   
+            s.value=""  
+            addToLog("clear") 
         }
         function deleteOne()
         {
@@ -131,11 +157,110 @@
             const s=text.value
             text.value=s.substring(0,s.length-1)
         }
-        function add()
+        function doMath(symbol)
+        {
+            
+            const text=document.getElementById("text")
+            const s=document.getElementById("storage")
+            if(s.value=="=")
+            {
+                s.value=""
+            }
+            if(text.value==""&&s.value=="")
+            {
+                addToLog("brak liczb dla "+symbol)
+            }
+            else if(text.value==""&&s.value!="")
+            {
+                addToLog("niepoprawna warość buforu")
+            }
+            else if(text.value!=""&&s.value=="")
+            {
+                
+                const x=text.value;
+                text.value="";
+                const str=x+symbol;
+                s.value=str;
+                addToLog(str)
+            }
+            else
+            {
+                
+                const x=parseFloat(text.value);
+                const y=parseFloat(s.value.substring(0,s.value.length-1))
+                var log=""
+                if(symbol=="+")
+                {
+                    const res=x+y;
+                    log=res+symbol
+                }
+                else if(symbol=="-")
+                {
+                    const res=y-x;
+                    log=res+symbol
+                }
+                else if(symbol=="*")
+                {
+                    const res=x*y;
+                    log=res+symbol
+                }
+                else if(symbol=="/")
+                {
+                    const res=y/x;
+                    log=res+symbol
+                }
+                else
+                {
+                    log="błędny symbol"
+                }
+                text.value="";
+                s.value=log;
+                addToLog(log)
+            }   
+        }
+        function eq()
         {
             const text=document.getElementById("text")
             const s=document.getElementById("storage")
-            
+            if (text.value!=""&&s.value!="")
+            {
+                const x=parseFloat(text.value);
+                const y=parseFloat(s.value.substring(0,s.value.length-1))
+                const symbol=s.value.substring(s.value.length-1,s.value.length)
+                var log=""
+                var res=0
+                if(symbol=="+")
+                {
+                    res=x+y;
+                    log="="+res
+                }
+                else if(symbol=="-")
+                {
+                    res=y-x;
+                    log="="+res
+                }
+                else if(symbol=="*")
+                {
+                    res=x*y;
+                    log="="+res
+                }
+                else if(symbol=="/")
+                {
+                    res=y/x;
+                    log="="+res
+                }
+                else
+                {
+                    log="błędny symbol"
+                }
+                text.value=res;
+                s.value="=";
+                addToLog(log)
+            }
+            else
+            {
+                addToLog("nie podałeś liczb")
+            }
         }
         function createButton(x,  y , n)
         {
@@ -149,6 +274,13 @@
             button.style.gridColumn=y
             button.style.gridRow=x
             main.appendChild(button)
+        }       
+        function addToLog(text) {
+            const l=document.getElementById("log")
+            const br = document.createElement("br"); /*stworzenie znacznika <br> */
+            const textNode = document.createTextNode(text); /*stworzenie pola z tekstem*/
+            l.appendChild(textNode);
+            l.appendChild(br);
         }
     </script>
 </head>
@@ -156,10 +288,9 @@
     <div id="mainWindow" class="window"> 
         
             <div id="main" class="grid-container"> </div> 
-            <div id="log" class="border">logs </div>
-                
-        
-        
+            <div id="log" class="border">
+                <b>LOGS</b> <br>
+            </div>  
     </div>
 </body>
 </html>
