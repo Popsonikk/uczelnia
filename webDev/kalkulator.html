@@ -5,16 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Kalkulator</title> 
     <style>
-       
+        .window
+        {
+            display: flex; /*mozliwość przesuwania elementów względem osi*/
+            justify-content: center; /* centrowanie tabeli*/
+            padding: 25px;
+            gap: 50px;
+        }
+
+        .border
+        {
+            display: block;
+            border: 3px solid black;
+            padding: 10px;
+           
+        }
+    
         .grid-container 
         {
-            display: grid; /*definicja tabeli*/
+            display: inline-grid; /*definicja tabeli z obwódką*/
             grid-template-columns: auto auto auto auto;/*4 kolumny*/
             grid-template-rows: auto auto auto auto auto auto;/*6 wierszy*/
             gap: 10px; /*odległość między elementami*/
-            justify-content: center; /* centrowanie tabeli*/
+            
+            border: 3px solid black;
+            padding: 10px;
+            background-color: lightgray;
+            
           
         }
+        
         .buttonStyle
         {
             width: 50px;
@@ -29,9 +49,14 @@
             height: 50px;
             width: 230px;
             border-color: #113f67;
-            grid-column: span 4; /*zajmuhe 3 kolumny*/
+            grid-column: span 4; /*zajmuhe 4 kolumny*/
+            resize: none;
+            text-align: right;
+            font-size: x-large;
+            line-height:50px;
 
         }
+      
 
 
     </style>
@@ -39,9 +64,15 @@
         function gen()
         {
             const main=document.getElementById("main")
-            
+          
+            const storage=document.createElement("text")
+            storage.setAttribute("id","storage")
+            document.body.appendChild(storage)
+
+            /*const text= document.createElement('input');
+            text.setAttribute('type', 'text');*/
+
             const text=document.createElement("textarea")
-            
             text.setAttribute("id","text")
             text.classList.add("textStyle")
             main.appendChild(text)
@@ -64,36 +95,56 @@
             createButton(3,4,"/")
             createButton(2,1,"C")
             createButton(2,3,"<-")
-            const b1=document.getElementById("bC")
-            b1.style.gridColumn="span 2"
-            b1.style.width="110px"
-       
-            main.removeChild(b1)
-            main.appendChild(b1)
+
+            const bC=document.getElementById("bC")
+            bC.style.gridColumn="span 2"
+            bC.style.width="110px" 
+            bC.onclick=clear      
+     
 
             const b2=document.getElementById("b<-")
             b2.style.gridColumn="span 2"
             b2.style.width="110px"
-       
-            main.removeChild(b2)
-            main.appendChild(b2)
+            b2.onclick=deleteOne
+           
+            const bplus=document.getElementById("b+")
+            bplus.onclick=add
             
-
-
             
         }
-        function show()
+        function setValue()
         {
-            alert(this.dataset.value)
+            const text=document.getElementById("text")
+            const s=text.value
+            text.value=s+this.dataset.value    
+        }
+        function clear()
+        {
+            const text=document.getElementById("text")
+            const s=document.getElementById("storage")
+            text.value=""   
+            s.value=""   
+        }
+        function deleteOne()
+        {
+            const text=document.getElementById("text")
+            const s=text.value
+            text.value=s.substring(0,s.length-1)
+        }
+        function add()
+        {
+            const text=document.getElementById("text")
+            const s=document.getElementById("storage")
+            
         }
         function createButton(x,  y , n)
         {
             const main=document.getElementById("main")
             const button= document.createElement("button")
-            button.innerHTML=n
-            button.onclick=show
+            button.innerHTML=n /*wyświetlana wartość*/
             button.classList.add("buttonStyle")
-            button.dataset.value=n
+            button.dataset.value=n /*wartość wydobywania przy naciśnięciu*/
+            button.onclick=setValue
             button.setAttribute("id","b"+n)
             button.style.gridColumn=y
             button.style.gridRow=x
@@ -102,6 +153,13 @@
     </script>
 </head>
 <body onload="gen()">
-    <div id="main" class="grid-container"> </div>
+    <div id="mainWindow" class="window"> 
+        
+            <div id="main" class="grid-container"> </div> 
+            <div id="log" class="border">logs </div>
+                
+        
+        
+    </div>
 </body>
 </html>
