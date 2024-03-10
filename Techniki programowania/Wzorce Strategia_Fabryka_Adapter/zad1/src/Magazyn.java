@@ -27,7 +27,13 @@ public class Magazyn {
     }
     public float pobierzWartośćPoOpodatkowaniu()
     {
-        float sum=wartośćMagazynu();
-        return sum-podatek.oblicz(sum);
+        float sum=0;
+
+        for(Przedmiot p:list)
+        {
+            float w= p.okreslWartosc();
+            sum+=(w-podatek.oblicz(w));
+        }
+        return sum;
     }
 }

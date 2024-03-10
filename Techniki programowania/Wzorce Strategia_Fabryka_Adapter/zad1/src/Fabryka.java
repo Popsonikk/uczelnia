@@ -1,8 +1,8 @@
 public interface Fabryka {
 
-    PodatekLiniowy stwórzPodatekliniowy(float procent);
+    Podatek stwórzPodatek();
 
 
-    PodatekProgresywny stwórzPodatekProgresywny(float procentM,float procentW,float próg);
+
 
 }

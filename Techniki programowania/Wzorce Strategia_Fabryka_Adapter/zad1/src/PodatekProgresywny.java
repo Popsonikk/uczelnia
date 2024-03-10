@@ -4,12 +4,23 @@ public class PodatekProgresywny implements Podatek{
     float podatekW;
     float próg;
 
-    PodatekProgresywny(float procentM, float procentW,float próg)
+    PodatekProgresywny()
     {
-        this.podatekM=procentM;
-        this.podatekW=procentW;
-        this.próg=próg;
+
     }
+
+    public void setPodatekM(float podatekM) {
+        this.podatekM = podatekM;
+    }
+
+    public void setPodatekW(float podatekW) {
+        this.podatekW = podatekW;
+    }
+
+    public void setPróg(float próg) {
+        this.próg = próg;
+    }
+
     @Override
     public float oblicz(float sum) {
         if(sum<=próg)
