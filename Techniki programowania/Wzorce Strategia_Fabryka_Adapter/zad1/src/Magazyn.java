@@ -1,3 +1,6 @@
+import strategia.Podatek;
+import strategia.Przedmiot;
+
 import java.util.ArrayList;
 import java.util.List;
 

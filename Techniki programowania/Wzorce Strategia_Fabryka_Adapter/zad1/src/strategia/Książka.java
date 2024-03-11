@@ -1,8 +1,12 @@
-public class Książka implements Przedmiot{
+package strategia;
+
+import strategia.Przedmiot;
+
+public class Książka implements Przedmiot {
 
     private int wydanie;
     private int rok;
-    Książka (int w,int r)
+    public Książka(int w, int r)
     {
         this.wydanie=w;
         this.rok=r;

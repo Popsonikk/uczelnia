@@ -1,23 +1,16 @@
-public class PodatekProgresywny implements Podatek{
+package strategia;
+
+import strategia.Podatek;
+
+public class PodatekProgresywny implements Podatek {
 
     float podatekM;
     float podatekW;
     float próg;
 
-    PodatekProgresywny()
-    {
-
-    }
-
-    public void setPodatekM(float podatekM) {
+    public PodatekProgresywny(float podatekM, float podatekW, float próg) {
         this.podatekM = podatekM;
-    }
-
-    public void setPodatekW(float podatekW) {
         this.podatekW = podatekW;
-    }
-
-    public void setPróg(float próg) {
         this.próg = próg;
     }
 

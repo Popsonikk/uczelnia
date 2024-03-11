@@ -1,7 +1,11 @@
-public class Obraz implements Przedmiot{
+package strategia;
+
+import strategia.Przedmiot;
+
+public class Obraz implements Przedmiot {
 
     private final int rok;
-    Obraz(int r)
+    public Obraz(int r)
     {
         this.rok=r;
     }
