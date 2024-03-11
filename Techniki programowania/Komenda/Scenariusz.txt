@@ -1,0 +1,13 @@
+GIVEN plik <poprawna ścieżka>
+AND text <string>
+WHEN wstawiamy text do pliku
+THEN wstawiono text poprawnie
+
+GIVEN plik <nie poprawna ścieżka>
+AND text <string>
+WHEN wstawiamy text do pliku
+THEN nie znaleziono pliku, text niewstawiony
+
+GIVEN plik <poprawna ścieżka>
+WHEN odczytujemy wartość
+THEN poprawnie odczytana wartość
