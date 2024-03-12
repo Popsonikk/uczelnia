@@ -1,30 +1,24 @@
 import java.util.Random;
+import java.util.concurrent.BlockingQueue;
 
 public class SlaveClass extends Thread {
     private boolean tryb;
     private int licznik;
 
-    private MasterClass mc;
-    private boolean status;
 
-    public SlaveClass(boolean tryb,MasterClass masterClass) {
+    private BlockingQueue<Integer> queue;
+
+    public SlaveClass(boolean tryb,BlockingQueue<Integer> queue) {
         this.tryb = tryb;
-        this.licznik=0;
-        this.mc=masterClass;
-        this.status=true;
+
+        this.queue=queue;
+
+
     }
 
-    public int getLicznik() {
-        return licznik;
-    }
 
-    public boolean isStatus() {
-        return status;
-    }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
+
 
     @Override
     public void run()
@@ -35,7 +29,14 @@ public class SlaveClass extends Thread {
             licznik=2;
         while (true)
         {
-
+            synchronized (queue)
+            {
+                try {
+                    queue.put(licznik);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             System.out.println("Wysłałem liczbę "+licznik);
             licznik+=2;
             try {
@@ -43,10 +44,7 @@ public class SlaveClass extends Thread {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
-
         }
-
 
     }
 }
