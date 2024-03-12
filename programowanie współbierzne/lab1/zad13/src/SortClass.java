@@ -1,39 +1,50 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 
 public class SortClass extends Thread{
-    private BlockingQueue<Integer> queue;
+    private Queue<Integer> queue;
     private int n;
     private List<Integer> list;
-    private ThreadGroup threadGroup;
+    private BlockingQueue<List<Integer>> main;
 
-    public SortClass(BlockingQueue<Integer> queue, int n,ThreadGroup threadGroup) {
+    public SortClass(Queue<Integer> queue, int n,BlockingQueue<List<Integer>> q) {
         this.queue = queue;
         this.n = n;
         this.list=new ArrayList<>();
-        this.threadGroup=threadGroup;
+        this.main=q;
     }
     @Override
     public void run()
     {
         while (true)
         {
-            try {
-                list.add(queue.take());
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            while(queue.isEmpty())
+            {
+                try {
+                    synchronized (queue)
+                    {
+                        queue.wait();
+                    }
+
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
+            list.add(queue.poll());
             if (list.size()==n)
             {
-                Collections.sort(list);
-                for (Integer i:list)
-                    System.out.print(i+", ");
+
                 break;
 
             }
         }
-        threadGroup.interrupt();
+        try {
+            main.put(list);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
