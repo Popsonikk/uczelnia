@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+/* definiujemy pozycję i rozmiar tkaniny */
+#main {
+    width: 640px;
+    height: 480px;
+    margin: auto;
+    border: 1px solid black;
+}
+</style>
+<script>
+    var canvas
+    var ctx // uchwyt kontekstu tkaniny pozwalający na operowanie na niej
+    var welcome_screen = true // stan ekranu powitalnego
+    var ref
+    var keyPressed={}
+    var ball = { //deklaracja piłki
+        x: 50,
+        y: 50,
+        vx: 5,
+        vy: 2,
+        radius: 25,//początkowe wymiary i prędkość piłki
+        color: "blue",
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true); //rysowanie piłki
+            ctx.closePath();
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        },
+    };
+    var rect1 = {
+        x: 10,
+        y: 200,
+        size: 80,
+        score: 0,
+        color: "red",
+        draw(){
+            ctx.save() // zachowanie stanu kontekstu
+            ctx.fillStyle = this.color // ustawienie koloru wypełnienia
+            ctx.translate(this.x, this.y) // przesunięcie tkaniny tak, aby narysowny bohater znalazł się w odpowiednim miejscu
+            ctx.fillRect(0,0,10,this.size) // narysowanie bohatera
+            ctx.restore() // przywrócenie stanu kontekstu
+        }
+    }
+    var rect2 = {
+        x: 620,
+        y: 200,
+        size: 80,
+        score: 0,
+        color: "green",
+        draw(){
+            ctx.save() 
+            ctx.fillStyle = this.color 
+            ctx.translate(this.x, this.y) 
+            ctx.fillRect(0,0,10,this.size) 
+            ctx.restore() 
+        }
+    }
+
+    function draw() {
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        rect1.draw();
+        rect2.draw();
+        ball.draw();
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+
+        //górna krawędź
+        if( ball.y + ball.vy < ball.radius)
+            ball.vy = -ball.vy;
+        //dolna krawędź
+        if( ball.y + ball.vy > canvas.height - ball.radius)
+            ball.vy = -ball.vy;
+        //prawa krawędź
+        if(ball.x+ball.vx>rect2.x-ball.radius&&ball.y + ball.vy>rect2.y&&ball.y + ball.vy<rect2.y+rect2.size)
+            ball.vx = -ball.vx;
+        if(ball.x+ball.vx>canvas.width-ball.radius&&!(ball.y + ball.vy>rect2.y&&ball.y + ball.vy<rect2.y+rect2.size))
+        {
+            
+            rect1.score++
+            
+            clear();
+            return
+            
+        }
+        //lewa krawędź
+        if(ball.x+ball.vx<rect1.x+ball.radius&&ball.y + ball.vy>rect1.y&&ball.y + ball.vy<rect1.y+rect1.size)
+            ball.vx = -ball.vx;
+        if(ball.x+ball.vx<ball.radius&&!(ball.y + ball.vy>rect1.y&&ball.y + ball.vy<rect1.y+rect1.size))
+        {
+            
+            rect2.score++;
+            clear();
+            return
+        }
+
+        raf = window.requestAnimationFrame(draw);
+    }
+    function clear()
+    {
+        
+        window.cancelAnimationFrame(ref)
+        rect1.y=200
+        rect2.y=200
+        ball.y=50
+        ball.x=50
+        ball.vx=5
+        ball.xy=2
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.font = '48px sans-serif' 
+        ctx.textAlign = 'center'
+        ctx.fillStyle= "orange"
+        if(rect1.score==5)
+            ctx.fillText("Wygrał gracz czerwony", 320, 240)
+        if(rect2.score==5)
+            ctx.fillText("Wygrał gracz zielony", 320, 240)    
+        else
+            ctx.fillText(rect1.score+" : "+rect2.score, 320, 240)
+        rect1.draw();
+        rect2.draw();
+        welcome_screen=true
+        
+
+    }
+   
+
+
+    /**
+    * funkcja inicjalizująca grę i tworząca ekran powitalny
+    */
+    function init() {
+         window.addEventListener( "keydown", keyListener, false )
+        // skojarzenie funkcji obsługi klawiatury ze zdarzeniem
+        canvas = document.getElementById('game')
+        // pobranie wskazania na element tkaniny
+        ctx = canvas.getContext('2d')
+        // pobranie kontekstu grafiki dwuwymiarowej dla tkaniny
+        ctx.font = '48px sans-serif' // ustawienie dla tkaniny kroju pisma i sposobu wyrównania tekstu
+        ctx.textAlign = 'center'
+        
+        ctx.fillText(rect1.score+" : "+rect2.score, 320, 240)
+        // umieszczenie napisu na ekranie powitalnym
+        rect1.draw();
+        rect2.draw();
+
+    }
+   
+    function keyListener(e) {
+    if(welcome_screen) { // jeżeli ekran powitalny to wyczyść
+        ctx.clearRect(0,0,640,480)
+        welcome_screen = false
+       // window.setInterval(redraw, 20)
+        window.requestAnimationFrame(draw)
+        // podłączenie funckji przerysowania tkaniny
+    }
+    switch(e.keyCode) {
+        case 38: // naciśnięto strzałkę w górę
+        if(rect2.y>=20)
+            rect2.y-=20
+        else
+            rect2.y=0
+        break
+        case 40: // naciśnięto strzałkę w dół
+        if(rect2.y<canvas.height-rect2.size-20)
+            rect2.y+=20
+        else
+            rect2.y=400
+        break
+        case 83: // naciśnięto s
+        if(rect1.y<=canvas.height-rect1.size-20)
+            rect1.y+=20
+        else
+            rect1.y=400
+        break
+        case 87: // naciśnięto w
+        if(rect1.y>=20)
+            rect1.y-=20
+        else
+            rect1.y=0
+        break
+    }
+}
+</script>
+</head>
+<body onload="init()">
+<div id="main">
+<canvas id="game" width="640" height="480">
+
+</canvas>
+</div>
+</body>
+</html>
