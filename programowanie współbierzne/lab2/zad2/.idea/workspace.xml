@@ -4,35 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a9c9979-e672-4eb8-bed5-f6afee7849a4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../zad1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad1/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad1/out/production/zad1/Main$CustomThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad1/out/production/zad1/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad1/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad1/zad1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zad2/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad3/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad3/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad3/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad3/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad3/out/production/zad3/Main$CustomThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad3/out/production/zad3/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad3/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad3/zad3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad4/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad4/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad4/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad4/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad4/out/production/zad4/Main$CustomThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad4/out/production/zad4/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad4/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zad4/zad4.iml" beforeDir="false" />
-    </list>
+    <list default="true" id="3a9c9979-e672-4eb8-bed5-f6afee7849a4" name="Changes" comment="wykluczanie zad2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,11 +42,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711104867825</updated>
-      <workItem from="1711104869552" duration="666000" />
+      <workItem from="1711104869552" duration="851000" />
     </task>
+    <task id="LOCAL-00001" summary="wykluczanie zad2">
+      <created>1711105593152</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711105593152</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="wykluczanie zad2" />
+    <option name="LAST_COMMIT_MESSAGE" value="wykluczanie zad2" />
   </component>
 </project>
