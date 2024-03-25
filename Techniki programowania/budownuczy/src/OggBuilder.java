@@ -3,12 +3,12 @@ import java.util.Base64;
 public class OggBuilder extends Builder{
     @Override
     public void budujNaglowek() {
-        produkt.setNagłówek("OggHeader");
+        produkt.setNapis("OggHeader\n");
     }
 
     @Override
     public void budujTagi() {
-        produkt.setTagi("OggTags");
+        produkt.setNapis("OggTags\n");
     }
 
     @Override
@@ -22,7 +22,7 @@ public class OggBuilder extends Builder{
                 i=-100;
             res.append(Base64.getEncoder().encodeToString(Integer.toString(i).getBytes())).append('\n');
         }
-        produkt.setBody(res.toString());
+        produkt.setNapis(res.toString());
 
     }
 }

@@ -1,12 +1,12 @@
 public class WavBuider extends Builder{
     @Override
     public void budujNaglowek() {
-        produkt.setNagłówek("WavHeader");
+        produkt.setNapis("WavHeader\n");
     }
 
     @Override
     public void budujTagi() {
-        produkt.setTagi(" ");
+        produkt.setNapis(" \n");
     }
 
     @Override
@@ -16,7 +16,7 @@ public class WavBuider extends Builder{
         {
             res.append(i).append(',');
         }
-        produkt.setBody(res.toString());
+        produkt.setNapis(res.toString());
 
     }
 }

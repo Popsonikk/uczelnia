@@ -1,30 +1,16 @@
 public class Produkt {
 
-    private String nagłówek;
-    private String tagi;
-    private String body;
+    private StringBuilder napis;
 
-    public void setNagłówek(String nagłówek) {
-        this.nagłówek = nagłówek;
+
+
+    public void setNapis(String s) {
+        this.napis.append(s);
     }
 
-    public void setTagi(String tagi) {
-        this.tagi = tagi;
+    public String getNapis() {
+        return napis.toString();
     }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
 
-    public String getNagłówek() {
-        return nagłówek;
-    }
-
-    public String getTagi() {
-        return tagi;
-    }
-
-    public String getBody() {
-        return body;
-    }
 }

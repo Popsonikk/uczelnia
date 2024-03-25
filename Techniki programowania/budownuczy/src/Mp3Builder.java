@@ -5,12 +5,12 @@ public class Mp3Builder extends Builder{
 
     @Override
     public void budujNaglowek() {
-        produkt.setNagłówek("Mp3Header");
+        produkt.setNapis("Mp3Header\n");
     }
 
     @Override
     public void budujTagi() {
-        produkt.setTagi("Mp3Tags");
+        produkt.setNapis("Mp3Tags\n");
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Mp3Builder extends Builder{
         {
             res.append(Base64.getEncoder().encodeToString(Integer.toString(i).getBytes())).append('\n');
         }
-        produkt.setBody(res.toString());
+        produkt.setNapis(res.toString());
 
     }
 }

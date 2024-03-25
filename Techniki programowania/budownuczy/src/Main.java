@@ -14,28 +14,17 @@ public class Main {
         Produkt produkt;
         director.setBuilder(wavBuider);
         produkt=director.wygenerujNapis(array);
-        System.out.println(produkt.getNagłówek());
-        System.out.println(produkt.getTagi());
-        System.out.println(produkt.getBody());
+        System.out.println(produkt.getNapis());
 
         System.out.println();
         director.setBuilder(mp3Builder);
         produkt=director.wygenerujNapis(array);
-        System.out.println(produkt.getNagłówek());
-        System.out.println(produkt.getTagi());
-        System.out.println(produkt.getBody());
+        System.out.println(produkt.getNapis());
 
         System.out.println();
         director.setBuilder(oggBuilder);
         produkt=director.wygenerujNapis(array);
-        System.out.println(produkt.getNagłówek());
-        System.out.println(produkt.getTagi());
-        System.out.println(produkt.getBody());
-
-
-
-
-
+        System.out.println(produkt.getNapis());
 
 
     }
