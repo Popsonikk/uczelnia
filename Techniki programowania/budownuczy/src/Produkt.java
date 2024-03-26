@@ -1,6 +1,6 @@
 public class Produkt {
 
-    private StringBuilder napis;
+    private StringBuilder napis=new StringBuilder();
 
 
 
