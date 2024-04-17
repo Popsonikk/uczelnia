@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">lab6</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zobacz_wydatki">Zobacz wydatki</string>
+    <string name="dodaj_wydatek">Dodaj Wydatek</string>
+    <string name="nazwa_wydatku">Nazwa wydatku</string>
+    <string name="warto_wydatku">Wartość wydatku</string>
+    <string name="wartosc_wydatku">wartosc wydatku</string>
+    <string name="dodaj">dodaj</string>
+    <string name="zsumuj_wydatki">Zsumuj Wydatki</string>
+    />
+</resources>

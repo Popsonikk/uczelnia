@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MenuNotiFragment">
+
+    <Button
+        android:id="@+id/AddNoti"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dodaj_notatke"
+        android:layout_marginTop="244dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ShowNoti"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="@string/zobacz_liste_notatek"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddNoti" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

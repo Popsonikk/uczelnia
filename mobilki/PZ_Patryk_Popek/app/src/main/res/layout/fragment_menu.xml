@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuFragment" >
+
+    <Button
+        android:id="@+id/AddNote"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dodaj_notatke"
+        android:layout_marginTop="144dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ShowNote"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="@string/zobacz_liste_notatek"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddNote" />
+    <Button
+        android:id="@+id/UpdateNote"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="@string/edytuj_notatke"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ShowNote" />
+    <Button
+        android:id="@+id/DeleteNote"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="@string/usun_notatke"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UpdateNote" />
+</androidx.constraintlayout.widget.ConstraintLayout>

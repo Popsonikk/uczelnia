@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">lab8_1</string>
+    <string name="powiadomienie_proste" >powiadomienie_proste</string>
+    <string name="powiadomienie_rozszerzone" >powiadomienie_rozszerzone</string>
+    <string name="powiadomienie_z_akcja" >powiadomienie_z_akcja</string>
+    <string name="jestem_wynikiem_prostego_powiadomienia">Jestem Wynikiem Prostego Powiadomienia</string>
+</resources>

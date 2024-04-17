@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">lab5</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="usun_kontakty">Usun kontakty</string>
+    <string name="zaktualizuj_kontakty">Zaktualizuj kontakty</string>
+    <string name="zobacz_kontakty">Zobacz kontakty</string>
+    <string name="dodaj_kontakt">Dodaj kontakt</string>
+    <string name="usun_kontakt">Usun kontakt</string>
+    <string name="id">id</string>
+    <string name="usun">Usun</string>
+    <string name="edytuj_kontakt">Edytuj Kontakt</string>
+    <string name="id_kontaktu">ID Kontaktu</string>
+    <string name="nazwa">Nazwa</string>
+    <string name="email">Email</string>
+    <string name="uaktualnij">Uaktualnij</string>
+    <string name="dodaj">Dodaj</string>
+
+</resources>

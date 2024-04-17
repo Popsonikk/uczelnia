@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".StartFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="124dp"
+        android:text="@string/witaj_w_aplikacji_n_ka_da_notatka_oraz_powiadomienie_powinno_mie_unikaln_nazw"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:id="@+id/textView"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/GoNote"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_notatek"
+        android:layout_marginTop="144dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+
+    <Button
+        android:id="@+id/GoNoti"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_powiadomie"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GoNote" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

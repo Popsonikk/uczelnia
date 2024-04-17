@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">PZ_Patryk_Popek</string>
+    <string name="patryk_popek">Patryk Popek</string>
+    <string name="notatnik">Notatnik</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tu_pojawi_sie_cia_o_notatki">Tu pojawi sie ciało notatki</string>
+    <string name="button">Button</string>
+    <string name="note_title">Note title</string>
+    <string name="note_body">Note body</string>
+    <string name="note_new_title">Note new title</string>
+    <string name="dodaj_notatke">Dodaj Notatke</string>
+    <string name="zobacz_liste_notatek">Zobacz Liste notatek</string>
+    <string name="edytuj_notatke">Edytuj Notatke</string>
+    <string name="usun_notatke">Usun notatke</string>
+    <string name="usu_notatke">Usuń Notatke</string>
+    <string name="enter_password">Enter password</string>
+    <string name="confirm">Confirm</string>
+    <string name="comfirm_password">Comfirm password</string>
+    <string name="create_password">Create password</string>
+    <string name="menu_notatek">Menu notatek</string>
+    <string name="menu_powiadomie">Menu Powiadomień</string>
+    <string name="witaj_w_aplikacji_n_ka_da_notatka_oraz_powiadomienie_powinno_mie_unikaln_nazw">Witaj w aplikacji \n Każda notatka oraz Powiadomienie powinno mieć unikalną nazwę</string>
+    <string name="dodaj_powiadomienie">Dodaj Powiadomienie</string>
+</resources>
