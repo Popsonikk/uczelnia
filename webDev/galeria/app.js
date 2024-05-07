@@ -23,6 +23,12 @@ async function main() {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+var imagesRouter = require('./routes/images');
+app.use('/images', imagesRouter);
+
+var galleriesRouter = require('./routes/galleries');
+app.use('/galleries', galleriesRouter);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
