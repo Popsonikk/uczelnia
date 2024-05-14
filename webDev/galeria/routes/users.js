@@ -4,4 +4,10 @@ var router = express.Router();
 const user_controller =require("../controllers/userController");
 router.get("/", user_controller.user_list);
 
+router.get("/user_add"
+, user_controller.user_add_get);
+
+router.post("/user_add"
+, user_controller.user_add_post);
+
 module.exports = router;
