@@ -26,6 +26,10 @@ app.set('view engine', 'pug');
 var imagesRouter = require('./routes/images');
 app.use('/images', imagesRouter);
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 var galleriesRouter = require('./routes/galleries');
 app.use('/galleries', galleriesRouter);
 
