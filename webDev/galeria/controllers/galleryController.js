@@ -1,69 +1,93 @@
-
-const asyncHandler = require("express-async-handler");
-const User = require("../models/user");
+// Import modułów z modelami.
 const Gallery = require("../models/gallery");
+const User = require("../models/user");
+
+// Import funkcji obsługi wyjątków/błedów wywołań asynchronicznych.
+const asyncHandler = require("express-async-handler");
+
+// Import funkcji walidatora.
 const { body, validationResult } = require("express-validator");
 
+// Kontroler listy galerii.
 exports.gallery_list = asyncHandler(async (req, res, next) => {
-    const all_galleries = await Gallery.find({}).populate("user").exec();
-    res.render("gallery_list", { title: "List of all galleries:", gallery_list: all_galleries });
+  const all_galleries = await Gallery.find({}).populate("user").exec();
+  res.render("gallery_list", { title: "List of all galleries:", gallery_list: all_galleries });
 });
 
-// Kontroler formularza dodawania nowej galerii (GET)
+// Kontroler formularza dodawania nowej galerii - GET.
 exports.gallery_add_get = asyncHandler(async (req, res, next) => {
-   
-    const all_users = await User.find({}).sort({ last_name: 1 }).exec();
-   
-    res.render("gallery_form", { title: "Add gallery", users: all_users, });
+  // pobranie listy userów z bazy
+  const all_users = await User.find().sort({ last_name: 1 }).exec();
+  // rendering formularza
+  res.render("gallery_form", {
+    title: "Add gallery",
+    users: all_users,
+  });
 });
 
+// Kontroler obsługi danych formularza dodawania nowej galerii - POST.
 exports.gallery_add_post = [
-    // Validation and sanitization
-    body("name").trim().isLength({ min: 2 }).escape().withMessage("Gallery name too short."),
-    body("description").trim().isLength({ min: 5 }).escape().withMessage("Description too short."),
-    body("user").trim().isLength({ min: 1 }).escape().withMessage("User is empty."),
-    
-    // Process request after validation and sanitization
-    asyncHandler(async (req, res, next) => {
-        const errors = validationResult(req);
+  // Walidacja i sanityzacja danych z formularza.
+  body("g_name", "Gallery name too short.")
+    .trim()
+    .isLength({ min: 2 })
+    .escape(),
 
-        const gallery = new Gallery({
-            name: req.body.name,
-            description: req.body.description,
-            user: req.body.user,
-        });
+  body("g_description")
+    .trim()
+    .escape(),
 
-        if (!errors.isEmpty()) {
-            const all_users = await User.find().sort({ last_name: 1 }).exec();
+  body("g_user", "Username must be selected.")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
 
-            res.render("gallery_form", {
-                title: "Add gallery:",
-                gallery: gallery,
-                users: all_users,
-                errors: errors.array(),
-            });
-            return;
-        } else {
-            const galleryExists = await Gallery.findOne({
-                name: req.body.name,
-                user: req.body.user,
-            })
-                .collation({ locale: "en", strength: 2 })
-                .exec();
-            
-            if (galleryExists) {
-                res.send("Gallery exists");
-            } else {
-                await gallery.save();
-                res.redirect("/galleries");
-            }
-        }
-    }),
+  // Przetwarzanie po walidacji.
+  asyncHandler(async (req, res, next) => {
+    // Przechwyt obiektu błędów walidacji.
+    const errors = validationResult(req);
+
+    // Utworzenie obiektu modelu Gallery z danymi z formularza.
+    const gallery = new Gallery({
+      name: req.body.g_name,
+      description: req.body.g_description,
+      user: req.body.g_user,
+      updated: new Date(),
+    });
+
+    // Sprawdzenie i obsługa ewentualnych błędów.
+    if (!errors.isEmpty()) {
+      // Jeśli pojawiły się błędy - ponownie wyrenderuj formularz i wypełnij pola wprowadzonymi danymi po sanityzacji.
+
+      const all_users = await User.find().sort({ last_name: 1 }).exec();
+
+      res.render("gallery_form", {
+        title: "Add gallery:",
+        gallery: gallery,
+        users: all_users,
+        errors: errors.array(),
+      });
+      return;
+    } else {
+      // Dane z formularza są poprawne.
+      // Należy jeszcze sprawdzić czy w bazie istnieje galeria
+      // o tej samej nazwie dla użytkownika.
+      const galleryExists = await Gallery.findOne({
+        name: req.body.g_name,
+        user: req.body.g_user,
+      })
+        .collation({ locale: "en", strength: 2 })
+        .exec();
+      if (galleryExists) {
+        // Błąd - nazwa galerii dla wybranego użytkownika już istnieje, 
+        // przekierowanie na stronę błędu.
+        // res.redirect("/users");
+        res.send("Gallery exists");
+      } else {
+        await gallery.save();
+        // Nowa galeria dodana - przekierowanie na stronę lista galerii.
+        res.redirect("/galleries");
+      }
+    }
+  }),
 ];
-
-
-
-
-
-
-

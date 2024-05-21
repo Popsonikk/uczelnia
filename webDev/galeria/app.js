@@ -1,45 +1,50 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
+// routers modules
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var galleriesRouter = require('./routes/galleries');
+var imagesRouter = require('./routes/images');
+var statsRouter = require('./routes/stats');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+var app = express();
 
-const app = express();
-
-// Set up mongoose connection
+// set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb://localhost:27017/GaleriaDB";
+const mongoDB = "mongodb://localhost:27017/GalleryDB";
+
 main().catch((err) => console.log(err));
 async function main() {
- await mongoose.connect(mongoDB);
+  await mongoose.connect(mongoDB);
 }
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-var imagesRouter = require('./routes/images');
-app.use('/images', imagesRouter);
-
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-var galleriesRouter = require('./routes/galleries');
-app.use('/galleries', galleriesRouter);
-
 app.use(logger('dev'));
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Przykład własnego middleware.
+// app.use((req, res, next) => {
+  // console.log('Own middleware');
+  // next();
+// })
+
+// routes paths
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/galleries', galleriesRouter);
+app.use('/images', imagesRouter);
+app.use('/stats', statsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
