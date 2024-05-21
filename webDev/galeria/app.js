@@ -16,7 +16,7 @@ var app = express();
 // set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb://localhost:27017/GalleryDB";
+const mongoDB = "mongodb://localhost:27017/GaleriaDB";
 
 main().catch((err) => console.log(err));
 async function main() {

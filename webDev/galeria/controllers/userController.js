@@ -7,6 +7,10 @@ const asyncHandler = require("express-async-handler");
 // Import funkcji walidatora.
 const { body, validationResult } = require("express-validator");
 
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken");
+
+
 // Kontroler listy userów.
 exports.user_list = asyncHandler(async (req, res, next) => {
   const all_users = await User.find({}).exec();
@@ -44,26 +48,37 @@ exports.user_add_post = [
     .isAlpha()
     .withMessage("Username must be alphabet letters."),
 
+  body("password")
+    .trim()
+    .isLength({ min: 5 }).withMessage("Password must be at least 5 characters long.")
+    .matches(/\d/).withMessage("Password must contain at least one number."),
+
+
+
+
   // Przetwarzanie danych po walidacji i sanityzacji.
   asyncHandler(async (req, res, next) => {
     // Pozyskanie z request obiektu błędu i jego ewentualna obsługa.
     const errors = validationResult(req);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
     // Tworzenie obiektu User po 'oczyszczeniu' danych. 
     const user = new User({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       username: req.body.username,
+      password: hashedPassword,
     });
 
     if (!errors.isEmpty()) {
       // Jeśli pojawiły się błędy - ponownie wyrenderuj formularz i wypełnij pola 
       // wprowadzonymi danymi po sanityzacji.
-      res.render("user_form", {
-        title: "Add user:",
-        user: user,
-        errors: errors.array(),
-      });
+      user.password = "",
+        res.render("user_form", {
+          title: "Add user:",
+          user: user,
+          errors: errors.array(),
+        });
       return;
     } else {
       // Dane z formularza są poprawne.
@@ -84,3 +99,48 @@ exports.user_add_post = [
     }
   }),
 ];
+
+exports.user_login_get = (req, res, next) => {
+  res.render("user_login_form", { title: "Login" });
+};
+
+exports.user_login_post = (req, res, next) => {
+  let username = req.body.username
+  let password = req.body.password
+  User.findOne({ username })
+    .then((user) => {
+      if (user) {
+        bcrypt.compare(password, user.password, function (err, result) {
+          if (err) {
+            res.json({
+              error: err
+            })
+          }
+          if (result) {
+            // console.log(user.username)
+            let token = jwt.sign({ username: user.username }, 'kodSzyfrujacy', { expiresIn: '1h' })
+            res.cookie('mytoken', token, { maxAge: 600000 })
+            //res.render('index', { title: 'Express', logged_user: username});
+            res.render('index', { title: 'Express' });
+          } else {
+            res.json({
+              message: 'Złe hasło'
+            })
+          }
+        })
+      } else {
+        res.json({
+          message: 'No user found!'
+        })
+      }
+    })
+}
+
+exports.user_logout_get = (req, res, next) => {
+  res.clearCookie('mytoken', {
+    sameSite: 'strict',
+    httpOnly: true,
+    signed: false
+  });
+  res.redirect('/');
+};

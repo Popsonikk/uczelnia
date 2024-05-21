@@ -18,6 +18,7 @@ exports.gallery_list = asyncHandler(async (req, res, next) => {
 exports.gallery_add_get = asyncHandler(async (req, res, next) => {
   // pobranie listy userów z bazy
   const all_users = await User.find().sort({ last_name: 1 }).exec();
+  
   // rendering formularza
   res.render("gallery_form", {
     title: "Add gallery",
