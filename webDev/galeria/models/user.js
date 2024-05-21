@@ -5,6 +5,7 @@ const UserSchema = new Schema({
     first_name: { type: String, maxLength: 100, required: true },
     last_name: { type: String, maxLength: 100, required: true },
     username: { type: String, maxLength: 100, required: true },
+    password: { type: String },
 }, { collection: 'users' }); 
 
 // Export model

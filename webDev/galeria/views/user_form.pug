@@ -9,6 +9,8 @@ block content
    input#last_name.form-control(type='text', placeholder='min. 2 litery' name='last_name' required value=(undefined===user ? '' : user.last_name))
    label(for='username') Username:
    input#username.form-control(type='text', placeholder='min. 3 litery' name='username' required value=(undefined===user ? '' : user.username))
+   label(for='password') Password:
+   input#password.form-control(type='password', placeholder='min. 3 litery' name='password' autocmplete='off' required value=(undefined===user ? '' : user.password))
    button.btn.btn-primary(type='submit') Submit
   if errors
    ul

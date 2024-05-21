@@ -8,12 +8,15 @@
     "serverstart": "SET DEBUG= express express-genapp:* & npm run devstart"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
     "express-validator": "^7.0.1",
     "http-errors": "~1.6.3",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.2",
     "morgan": "~1.9.1",
     "pug": "^2.0.4"

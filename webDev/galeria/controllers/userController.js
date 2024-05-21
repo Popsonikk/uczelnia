@@ -2,6 +2,10 @@
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require("express-validator");
 const User = require("../models/user");
+// Import modułów do szyfrowania i autentykacji
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken");
+
 
 
 
@@ -22,10 +26,12 @@ exports.user_add_post = [
         // Pozyskanie z request obiektu błędu i jego ewentualna obsługa.
         const errors = validationResult(req);
         // Tworzenie obiektu User po 'oczyszczeniu' danych
+        const hash=await bcrypt.hash(req.body.password, 10);
         const user = new User({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             username: req.body.username,
+            password: hash,
         }); if (!errors.isEmpty()) {
             // Jeśli pojawiły się błędy - ponownie wyrenderuj formularz i wypełnij pola
             // wprowadzonymi danymi po sanityzacji.
@@ -55,3 +61,45 @@ exports.user_add_post = [
     }),
 ];
 
+// Kontroler wyświetlania formularza logowania - GET.
+exports.user_login_get = (req, res, next) => {
+    res.render("user_login_form", { title: "Login" });
+};
+exports.user_login_post = (req, res, next) => {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    User.findOne({ username })
+        .then((user) => {
+            if (user) {
+                bcrypt.compare(password, user.password, function (err, result) {
+                    if (err) {
+                        return res.json({ error: err });
+                    }
+                    if (result) {
+                        let token = jwt.sign({ username: user.username }, 'kodSzyfrujacy', { expiresIn: '1h' });
+                        res.cookie('mytoken', token, { 
+                            maxAge: 600000, // 10 minutes
+                            httpOnly: true, // Prevents JavaScript access to the cookie
+                            secure: true, // Ensures the cookie is sent only over HTTPS
+                            sameSite: 'Strict' // Ensures the cookie is sent only with same-site requests
+                        });
+                        res.render('index', { title: 'Express' });
+                    } else {
+                        res.json({ message: 'Złe hasło' });
+                    }
+                });
+            } else {
+                res.json({ message: 'No user found!' });
+            }
+        })
+        .catch(next); // handle errors
+};
+exports.user_logout_get = (req, res, next) => {
+    res.clearCookie('mytoken', {
+    sameSite: 'strict',
+    httpOnly: true,
+    signed: false
+    });
+    res.redirect('/');
+   };
