@@ -24,6 +24,7 @@ async function main() {
 }
 
 // view engine setup
+app.use('/galleries', express.static(path.join(__dirname, 'public/images')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 

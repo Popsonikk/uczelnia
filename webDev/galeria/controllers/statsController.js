@@ -12,7 +12,7 @@ exports.stats_list = asyncHandler(async (req, res, next) => {
     title: "Stats:",
     n_users: numUsers,
     n_galleries: numGalleries,
-    n_images: numImages,
+    n_images: numImages
   });
   //response "gołym" tekstem
   //res.send(`Users: ${numUsers} <br>Galleries: ${numGalleries} <br>Images: ${numImages}<br>`);

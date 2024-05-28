@@ -7,9 +7,10 @@ const asyncHandler = require("express-async-handler");
 // Import funkcji walidatora.
 const { body, validationResult } = require("express-validator");
 
+// Import modułów do szyfrowania i autentykacji
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
-
+//local storage
 
 // Kontroler listy userów.
 exports.user_list = asyncHandler(async (req, res, next) => {
@@ -48,37 +49,34 @@ exports.user_add_post = [
     .isAlpha()
     .withMessage("Username must be alphabet letters."),
 
-  body("password")
-    .trim()
-    .isLength({ min: 5 }).withMessage("Password must be at least 5 characters long.")
-    .matches(/\d/).withMessage("Password must contain at least one number."),
+  body("password", "Password to short!")
+    .isLength({ min: 8 }),
 
-
-
-
-  // Przetwarzanie danych po walidacji i sanityzacji.
   asyncHandler(async (req, res, next) => {
+
     // Pozyskanie z request obiektu błędu i jego ewentualna obsługa.
     const errors = validationResult(req);
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
+    //zaszyfrowanie hasła - asynchroniczne, hash zwraca obiekt promise, stąd await
+    const passwordHash = await bcrypt.hash(req.body.password, 10)
+
+    console.log(passwordHash)
     // Tworzenie obiektu User po 'oczyszczeniu' danych. 
     const user = new User({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       username: req.body.username,
-      password: hashedPassword,
+      password: passwordHash,
     });
 
     if (!errors.isEmpty()) {
       // Jeśli pojawiły się błędy - ponownie wyrenderuj formularz i wypełnij pola 
       // wprowadzonymi danymi po sanityzacji.
-      user.password = "",
-        res.render("user_form", {
-          title: "Add user:",
-          user: user,
-          errors: errors.array(),
-        });
+      res.render("user_form", {
+        title: "Add user:",
+        user: user,
+        errors: errors.array(),
+      });
       return;
     } else {
       // Dane z formularza są poprawne.
@@ -100,47 +98,66 @@ exports.user_add_post = [
   }),
 ];
 
+
+// Kontroler wyświetlania formularza logowania - GET.
 exports.user_login_get = (req, res, next) => {
   res.render("user_login_form", { title: "Login" });
 };
 
+// Kontroler obsługi danych formularza logowania - POST.
 exports.user_login_post = (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
+
+  // wyszukanie w bazie rekord/dokument użytkownika username i podstaw pod obiekt user
   User.findOne({ username })
     .then((user) => {
+      // jeśli jest to sprawdź hasło 
       if (user) {
         bcrypt.compare(password, user.password, function (err, result) {
+          // pojawił się jakiś błąd w sprawdzaniu hasła - zwróć błąd, tu jako obiekt JSON
           if (err) {
-            res.json({
-              error: err
-            })
+            // res.json({
+            //   error: err
+            // })
+            res.send('Password checking error!')
           }
           if (result) {
-            // console.log(user.username)
+            // hasło prawidłowe - wygeneruj i wyślij token w cookie
             let token = jwt.sign({ username: user.username }, 'kodSzyfrujacy', { expiresIn: '1h' })
-            res.cookie('mytoken', token, { maxAge: 600000 })
-            //res.render('index', { title: 'Express', logged_user: username});
+            //  res.json({
+            //   message: 'Zalogowano',
+            //   token: token,
+            //   }
+            // es.cookie('mytoken', token, {maxAge: 600000, httpOnly: true })
+            res.cookie('mytoken', token, {maxAge: 600000})
             res.render('index', { title: 'Express' });
           } else {
-            res.json({
-              message: 'Złe hasło'
-            })
+            // hasło nieprawidłowe - wyślij jako obiekt JSON
+            // res.json({
+            //   message: 'Bad password'
+            // })
+            res.send('Bad password')
           }
         })
       } else {
-        res.json({
-          message: 'No user found!'
-        })
+        // użytkownik nieznaleziony - wyślij jako obiekt JSON
+        // res.json({
+        //   message: 'No user found!'
+        // })
+        res.send('No user found!')
       }
     })
 }
 
+// Kontroler wylogowania - GET.
 exports.user_logout_get = (req, res, next) => {
+ // wyczyść token
   res.clearCookie('mytoken', {
     sameSite: 'strict',
     httpOnly: true,
     signed: false
   });
+
   res.redirect('/');
 };

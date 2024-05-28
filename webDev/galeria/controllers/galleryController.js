@@ -1,6 +1,8 @@
 // Import modułów z modelami.
 const Gallery = require("../models/gallery");
 const User = require("../models/user");
+const Image = require("../models/image");
+
 
 // Import funkcji obsługi wyjątków/błedów wywołań asynchronicznych.
 const asyncHandler = require("express-async-handler");
@@ -14,18 +16,35 @@ exports.gallery_list = asyncHandler(async (req, res, next) => {
   res.render("gallery_list", { title: "List of all galleries:", gallery_list: all_galleries });
 });
 
+
 // Kontroler formularza dodawania nowej galerii - GET.
 exports.gallery_add_get = asyncHandler(async (req, res, next) => {
-  // pobranie listy userów z bazy
-  const all_users = await User.find().sort({ last_name: 1 }).exec();
-  
+
+  // opcje formularza - inny dla admina inny dla zwykłego usera
+  let opcje;
+  // lista wszystkich userów
+  let all_users;
+
+  if (req.user.username === "admin") {
+    // dane do formularza admina
+    all_users = await User.find().sort({ last_name: 1 }).exec();
+    opcje = { "admin_user": true, "disabled": false }
+  } else {
+    // dane do formularza usera zwykłego
+    let owner_user = await User.findOne({ "username": req.user.username }).exec();
+    console.log(owner_user)
+    opcje = { "admin_user": false, "disabled": true, "owner_user": owner_user }
+    console.log(opcje)
+  }
   // rendering formularza
   res.render("gallery_form", {
     title: "Add gallery",
     users: all_users,
-  });
+    opcje: opcje,
+  })
 });
 
+// --------------------------------------------------
 // Kontroler obsługi danych formularza dodawania nowej galerii - POST.
 exports.gallery_add_post = [
   // Walidacja i sanityzacja danych z formularza.
@@ -60,12 +79,29 @@ exports.gallery_add_post = [
     if (!errors.isEmpty()) {
       // Jeśli pojawiły się błędy - ponownie wyrenderuj formularz i wypełnij pola wprowadzonymi danymi po sanityzacji.
 
-      const all_users = await User.find().sort({ last_name: 1 }).exec();
+      // opcje formularza - inny dla admina inny dla zwykłego usera
+      let opcje;
+      // lista wszystkich userów
+      let all_users;
 
+      if (req.user.username === "admin") {
+        // dane do formularza admina
+        all_users = await User.find().sort({ last_name: 1 }).exec();
+        opcje = { "admin_user": true, "disabled": false }
+      } else {
+        // dane do formularza usera zwykłego
+        let owner_user = await User.findOne({ "username": req.user.username }).exec();
+        console.log(owner_user)
+        opcje = { "admin_user": false, "disabled": true, "owner_user": owner_user }
+        console.log(opcje)
+      }
+
+      // rendering formularza
       res.render("gallery_form", {
         title: "Add gallery:",
         gallery: gallery,
         users: all_users,
+        opcje: opcje,
         errors: errors.array(),
       });
       return;
@@ -92,3 +128,15 @@ exports.gallery_add_post = [
     }
   }),
 ];
+
+// Kontroler GET
+exports.gallery_browse = asyncHandler(async (req, res, next) => {
+  const all_galleries = await Gallery.find({}).exec();
+  res.render("gallery_browse", { title: "Select gallery:", galleries: all_galleries});
+ });
+ // Kontroler POST
+ exports.gallery_browse = asyncHandler(async (req, res, next) => {
+  const all_galleries = await Gallery.find({}).exec();
+  const gallery_images = await Image.find({gallery: req.body.s_gallery}).exec();
+  res.render("gallery_browse", { title: "View gallery:", galleries: all_galleries, images: gallery_images});
+ });
