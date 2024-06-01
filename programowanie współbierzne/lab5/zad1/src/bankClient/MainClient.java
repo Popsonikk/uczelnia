@@ -14,6 +14,10 @@ public class MainClient implements Serializable {
         BankServiceInterface bankServer= (BankServiceInterface) Naming.lookup("//localhost:5555/bankServer");
         Client client= bankServer.register("jan","nowak",23,700);
         System.out.println(client.getMoney());
+        while (true)
+        {
+
+        }
 
 
     }
