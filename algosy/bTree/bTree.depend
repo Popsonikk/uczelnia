@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1650902985 source:c:\users\popso\onedrive\pulpit\studia\sem4\algosy\btree\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+

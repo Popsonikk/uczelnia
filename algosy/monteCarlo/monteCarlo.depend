@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1654159464 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\montecarlo\main.cpp
+	<iostream>
+	<string>
+	<stdlib.h>
+	<vector>
+	<iomanip>
+

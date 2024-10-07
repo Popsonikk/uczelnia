@@ -1,0 +1,243 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include<ios>  //czyszczenie cin
+#include<limits> //czyszczenie cin
+using namespace std;
+int T=10; //rzad drzewa
+int M=2*T+1;//ilosc kluczy w wezle
+
+class bTree{
+    public:
+    bTree *ojciec;
+    map<string,string> mapa;
+    vector <bTree*> children;
+    bTree()
+    {
+        ojciec=nullptr;
+        for (int i=0;i<M;i++)
+            children.push_back(nullptr);
+    }
+
+};
+void dziel(bTree **korzen,bTree *node)
+{
+    if(node->mapa.size()>M) //przekroczona wartosc kluczy w wezle
+    {
+        if(node->ojciec==nullptr) //jestesmy w korzeniu
+        {
+            bTree *rodzic=new bTree;
+            bTree *prawy= new bTree; //podzial wezla generuje 2 nowe  wezly
+            int middle=node->mapa.size()/2+1;
+        }
+    }
+}
+void dodaj(bTree **korzen,string key,string value)
+{
+    int x=0;//jezeli znajde interesujace mnie wartosci dla pozostalych dwoch vectorow uzyje funkci at
+    bTree *pom=*korzen;
+    map<string,string>::iterator it=pom->mapa.begin();
+    if(it==pom->mapa.end())//0 elementow
+    {
+        pom->mapa[key]=value;
+        return;
+    }
+    while(1)
+    {
+
+        if(it->first==key) //klucz znajduje sie w drzewie nadpisujemy wartosc
+        {
+            it->second=value;
+            dziel(korzen,pom);
+            break;
+        }
+        else if(it->first>key) //klucz jest wczesniej leksykonalnie
+        {
+            if(pom->children.at(x)!=nullptr) //mamy dziecko do ktorego schodzimy
+            {
+                pom=pom->children.at(x);
+                it=pom->mapa.begin();
+                x=0;
+                continue;
+            }
+            else if(pom->children.at(x)==nullptr) //nie mamy dziecka zapisujemy w obecnym wezle
+            {
+                pom->mapa.insert(it,{key,value});
+                dziel(korzen,pom);
+                break;
+            }
+        }
+        else if(it->first<key) //klucz jest pozniej leksykonalnie
+        {
+            map<string,string>::iterator pomit=it;
+            if(++pomit!=pom->mapa.end()) //nie doszlismy do konca listy wiec przechodzimy dalej
+            {
+                ++it;
+                x++;
+                continue;
+
+            }
+            else //jestesmy na koncu listy
+            {
+                if(pom->children.at(x+1)==nullptr) //nie mamy dziecka zapisujewy w obecnym wezle
+                {
+                    pom->mapa.insert(it,{key,value});
+                    dziel(korzen,pom);
+                    break;
+                }
+                else //mamy dziecko schodzimy do niego
+                {
+                    pom=pom->children.at(x+1);
+                    it=pom->mapa.begin();
+                    x=0;
+                    continue;
+                }
+            }
+
+        }
+    }
+}
+void znajdz(bTree **korzen,string key)
+{
+    int x=0;//jezeli znajde interesujace mnie wartosci dla pozostalych dwoch vectorow uzyje funkci at
+    bTree *pom=*korzen;
+    map<string,string>::iterator it=pom->mapa.begin();
+    if(it==pom->mapa.end())//0 elementow
+    {
+        if(it->first==key)
+        {
+            cout<<it->second;
+
+        }
+        return;
+    }
+    while(1)
+    {
+
+        if(it->first==key) //klucz znajduje sie w drzewie nadpisujemy wartosc
+        {
+            cout<<it->second;
+            break;
+        }
+        else if(it->first>key) //klucz jest wczesniej leksykonalnie
+        {
+            if(pom->children.at(x)!=nullptr) //mamy dziecko do ktorego schodzimy
+            {
+                pom=pom->children.at(x);
+                it=pom->mapa.begin();
+                x=0;
+                continue;
+            }
+            else if(pom->children.at(x)==nullptr) //nie mamy dziecka zapisujemy w obecnym wezle
+            {
+               cout<<"BRAK";
+               return;
+            }
+        }
+        else if(it->first<key) //klucz jest pozniej leksykonalnie
+        {
+            map<string,string>::iterator pomit=it;
+            if(++pomit!=pom->mapa.end()) //nie doszlismy do konca listy wiec przechodzimy dalej
+            {
+                ++it;
+                x++;
+                continue;
+
+            }
+            else //jestesmy na koncu listy
+            {
+                if(pom->children.at(x+1)==nullptr) //nie mamy dziecka zapisujewy w obecnym wezle
+                {
+                   cout<<"BRAK";
+                   return;
+                }
+                else //mamy dziecko schodzimy do niego
+                {
+                    pom=pom->children.at(x+1);
+                    it=pom->mapa.begin();
+                    x=0;
+                    continue;
+                }
+            }
+
+        }
+    }
+}
+int main()
+{
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    int n; //liczba operacji
+    cin>>n;
+    string klucz,wartosc;
+    bTree *korzen=new bTree;
+
+    for (int i=0;i<=n;i++)
+    {
+
+        std::string haslo;
+        std::getline(std::cin,haslo);
+
+        if(haslo.find(":")==string::npos) //znakiem dzielacym jest :
+        {
+
+            znajdz(&korzen,haslo);
+            cout<<"\n";
+
+        }
+        else
+        {
+
+            klucz=haslo.substr(0,haslo.find(":"));
+            wartosc=haslo.substr(haslo.find(":")+2,haslo.length());
+            dodaj(&korzen,klucz,wartosc);
+            //cout<<klucz<<"\n";
+            //cout<<wartosc;
+        }
+    }
+}
+
+
+#include <iostream>
+#include <string>
+#include <map>
+
+using namespace std;
+
+int main()
+{
+    map<string,int> mapa;
+     map<string,int> mapa1;
+      map<string,int> mapa2;
+    mapa.insert({"jan",1});
+     mapa.insert({"patryk",3});
+     mapa["xd"]=2;
+     map<string,int>::iterator it=mapa.begin();
+
+    ++it;
+    ++it;
+    mapa.insert(it,{"ww",24});
+     mapa1.insert(mapa.begin(),mapa.find(it->first));
+     mapa2.insert(it,mapa.end());
+
+
+
+     map<string,int>::iterator it1=mapa1.begin();
+      for(;it1!=mapa1.end();++it1)
+     {
+         cout<<it1->first<<' ';
+     }
+     cout<<endl;
+     map<string,int>::iterator it2=mapa2.begin();
+      for(;it2!=mapa2.end();++it2)
+     {
+         cout<<it2->first<<' ';
+     }
+
+
+
+
+}
+

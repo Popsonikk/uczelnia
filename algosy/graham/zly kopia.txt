@@ -1,0 +1,148 @@
+//pole wzorem herona
+#include <iostream>
+#include <vector>
+#include <iterator>
+#include <cmath>
+#include<algorithm>
+#include<queue>
+#include <iomanip>
+using namespace std;
+struct Punkt //punkt ma wspolrzendne punktu oraz kat i dlugosc od poczotku ukladu
+{
+    double x;
+    double y;
+    double dlugosc=0;
+    double kat=0;
+};
+Punkt s;
+bool porownaj(Punkt a, Punkt b)
+{
+    if(a.kat==b.kat)
+        return a.dlugosc<b.dlugosc; //dlugosci jezeli rowny kat
+    return a.kat<b.kat;
+}
+double det(Punkt a,Punkt b,Punkt c)
+{
+    return a.x*(b.y-c.y)-a.y*(b.x-c.x)+(b.x*c.y-b.y*c.x);
+}
+void graham(vector<Punkt> tab)
+{
+    int i=2;
+    s=tab[0];
+    Punkt p1=s,p2=tab[1],p3=tab[2];
+    while(i<tab.size())
+    {
+        double dett=det(p1,p2,p3);
+        cout<<p1.x<<'-'<<p1.y<<' '<<p2.x<<'-'<<p2.y<<' '<<p3.x<<'-'<<p3.y<<' '<<dett<<'\n';
+        if(dett>=0)
+        {
+            p1=p2;
+            p2=p3;
+            p3=tab[i+1];
+            i++;
+        }
+        else
+        {
+            p2=p1;
+            tab.erase(tab.begin()+i-1);
+            if(i==2)
+                p1=s;
+            else
+                p1=tab[i-3];
+            i--;
+
+        }
+    }
+    /*for(int i=0;i<tab.size();i++)
+        cout<<tab.at(i).x<<' '<<tab.at(i).y<<' '<<tab[i].kat<<'\n';*/
+    p1=tab[1];
+
+
+    bool flag=true;
+    double pole=0,a,b,c;
+    for(i=2;i<tab.size();i++)
+    {
+        if(flag)
+        {
+            p2=tab[i];
+            flag=!flag;
+        }
+        else
+        {
+            p1=tab[i];
+            flag=!flag;
+        }
+        a=sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
+        b=sqrt((s.x-p2.x)*(s.x-p2.x)+(s.y-p2.y)*(s.y-p2.y));
+        c=sqrt((p1.x-s.x)*(p1.x-s.x)+(p1.y-s.y)*(p1.y-s.y));
+        pole+=sqrt((a+b+c)*(a+b-c)*(a-b+c)*(-a+b+c))/4;
+        //cout<<s.x<<'-'<<s.y<<' '<<p1.x<<'-'<<p1.y<<' '<<p2.x<<'-'<<p2.y<<' '<<pole<<'\n';
+    }
+
+    cout<<setprecision(3)<<fixed<<pole;
+}
+int main()
+{
+    vector<Punkt> lista;
+    int n,m=0; //ilosc punkow ,m to pozycja na ktores stoi poczatkowy punkt
+    cin>>n;
+   // Punkt s; //poczotkowy punkt
+    for(int i=0;i<n;i++)
+    {
+        Punkt p;
+        double x,y;
+        cin>>x>>y;
+        p.x=x;
+        p.y=y;
+        lista.push_back(p);
+        if(i==0)
+            s=p;
+        else
+        {
+            if(y<s.y){
+                 s=p;m=i;
+            }
+            else if(y==s.y&&x<s.x){
+                s=p;m=i;
+            }
+        }
+    }
+    lista.erase(lista.begin()+m);
+    int ujemne=0;
+    for(int i=0;i<n-1;i++)
+    {
+         lista[i].dlugosc=sqrt((s.x-lista[i].x)*(s.x-lista[i].x)+(s.y-lista[i].y)*(s.y-lista[i].y));
+         double kat=atan((lista[i].y-s.y)/(lista[i].x-s.x));
+         lista[i].kat=kat;
+         if (kat<0)
+            ujemne++;
+    }
+
+    sort(lista.begin(),lista.end(),porownaj);
+    lista.insert(lista.begin()+ujemne,s);
+    /*for(int i=0;i<lista.size();i++)
+    cout<<lista.at(i).x<<' '<<lista.at(i).y<<' '<<lista[i].kat<<'\n';
+        cout<<'\n';*/
+    for(int i=1,x=1;i<n;i++,x++)
+    {
+        if(lista[x-1].kat==lista[x].kat)
+        {
+            lista.erase(lista.begin()+x-1);
+            x--;
+        }
+    }
+   /* vector<Punkt> pom;
+    for(int i=0;i<lista.size();i++)
+    {
+        if(lista.at(i).x<s.x)
+            pom.push_back(lista.at(i));
+        else
+            break;
+    }
+    lista.erase(lista.begin(),lista.begin()+pom.size());
+    lista.insert(lista.end(),pom.begin(),pom.end());*/
+  /*  cout<<'\n';
+   for(int i=0;i<lista.size();i++)
+        cout<<lista.at(i).x<<' '<<lista.at(i).y<<' '<<lista[i].kat<<'\n';*/
+    graham(lista);
+}

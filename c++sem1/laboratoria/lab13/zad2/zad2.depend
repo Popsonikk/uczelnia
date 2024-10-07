@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1611744023 source:c:\users\popso\onedrive\pulpit\progrmowanie\laboratoria\lab13\zad2\main.cpp
+	<iostream>
+	"Array.h"
+
+1611744513 source:c:\users\popso\onedrive\pulpit\progrmowanie\laboratoria\lab13\zad2\array.cpp
+	"Array.h"
+
+1611745058 c:\users\popso\onedrive\pulpit\progrmowanie\laboratoria\lab13\zad2\array.h
+	<cstddef>
+

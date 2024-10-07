@@ -1,0 +1,411 @@
+1. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git
+	$ git --help
+2. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git
+	$ git init --help
+3. ----------------------------------------------------------------------------------------------------------- 
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git
+	$ git config --global user.name "Patryk Popek"
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git
+	$ git config --global user.email "patrykpopek16@gmail.com"
+4. ----------------------------------------------------------------------------------------------------------- 
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git
+	$ git config --global user.coeditor "nano"
+5. ----------------------------------------------------------------------------------------------------------- 
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2
+	$ git config -l
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager-core
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=Patryk Popek-
+user.email=patrykpopek16@gmail.com
+user.coeditor=nano
+6. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2
+	$ mkdir -p Lab02/repo2
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2
+	$ cd Lab02/repo2
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2
+	$ git init
+Initialized empty Git repository in C:/Users/popso/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2/.git/
+7. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2
+	$ touch README.md
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2
+	$ touch .gitignore
+8. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+9. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git add -A
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .gitignore
+        new file:   README.md
+
+10. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git commit -m "c1"
+[master (root-commit) b0c159a] c1
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git status
+On branch master
+nothing to commit, working tree clean
+11. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ touch plik1.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ touch plik2.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ touch plik3.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        plik1.txt
+        plik2.txt
+        plik3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+12. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git add -A
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   plik1.txt
+        new file:   plik2.txt
+        new file:   plik3.txt
+13. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   plik1.txt
+        new file:   plik2.txt
+        new file:   plik3.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   plik1.txt
+        modified:   plik2.txt
+        modified:   plik3.txt
+14. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git add -A
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   plik1.txt
+        new file:   plik2.txt
+        new file:   plik3.txt
+15. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git commit -m "c2"
+[master 055675f] c2
+ 3 files changed, 3 insertions(+)
+ create mode 100644 plik1.txt
+ create mode 100644 plik2.txt
+ create mode 100644 plik3.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git log
+commit 055675fd278c64fc6c161fb06f55ec96368388c5 (HEAD -> master)
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:34:40 2022 +0200
+
+    c2
+
+commit b0c159a620b8634b270b94266ccf0a282cabcc5c
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:27:06 2022 +0200
+
+    c1
+16. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git show 055675fd278c64fc6c161fb06f55ec96368388c5
+commit 055675fd278c64fc6c161fb06f55ec96368388c5 (HEAD -> master)
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:34:40 2022 +0200
+
+    c2
+
+diff --git a/plik1.txt b/plik1.txt
+new file mode 100644
+index 0000000..9606d7d
+--- /dev/null
++++ b/plik1.txt
+@@ -0,0 +1 @@
++aaaaaaaaa
+\ No newline at end of file
+diff --git a/plik2.txt b/plik2.txt
+new file mode 100644
+index 0000000..96fcff0
+--- /dev/null
++++ b/plik2.txt
+@@ -0,0 +1 @@
++aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+\ No newline at end of file
+diff --git a/plik3.txt b/plik3.txt
+new file mode 100644
+index 0000000..7ec9a4b
+--- /dev/null
++++ b/plik3.txt
+@@ -0,0 +1 @@
++aa
+\ No newline at end of file
+17. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git add -A
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git commit -m "c3"
+[master 897bdb1] c3
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 plik3.txt
+18. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git log
+commit 897bdb1aaa1f6dfcaad8ff4f9fcd694a95e6a34a (HEAD -> master)
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:46:28 2022 +0200
+
+    c3
+
+commit 055675fd278c64fc6c161fb06f55ec96368388c5
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:34:40 2022 +0200
+
+    c2
+
+commit b0c159a620b8634b270b94266ccf0a282cabcc5c
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:27:06 2022 +0200
+
+    c1
+
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git show 897bdb1aaa1f6dfcaad8ff4f9fcd694a95e6a34a
+commit 897bdb1aaa1f6dfcaad8ff4f9fcd694a95e6a34a (HEAD -> master)
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:46:28 2022 +0200
+
+    c3
+
+diff --git a/plik3.txt b/plik3.txt
+deleted file mode 100644
+index 7ec9a4b..0000000
+--- a/plik3.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-aa
+\ No newline at end of file
+19. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git rm plik2.txt
+rm 'plik2.txt'
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git commit -m "c4"
+[master ad74ec3] c4
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 plik2.txt
+20. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git log
+commit ad74ec3cce258ac99e69387ba63da2e5cc35df55 (HEAD -> master)
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:50:07 2022 +0200
+
+    c4
+
+commit 897bdb1aaa1f6dfcaad8ff4f9fcd694a95e6a34a
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:46:28 2022 +0200
+
+    c3
+
+commit 055675fd278c64fc6c161fb06f55ec96368388c5
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:34:40 2022 +0200
+
+    c2
+
+commit b0c159a620b8634b270b94266ccf0a282cabcc5c
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:27:06 2022 +0200
+
+    c1
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git show ad74ec3cce258ac99e69387ba63da2e5cc35df55
+commit ad74ec3cce258ac99e69387ba63da2e5cc35df55 (HEAD -> master)
+Author: Patryk Popek- <patrykpopek16@gmail.com>
+Date:   Thu Oct 13 16:50:07 2022 +0200
+
+    c4
+
+diff --git a/plik2.txt b/plik2.txt
+deleted file mode 100644
+index 96fcff0..0000000
+--- a/plik2.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+\ No newline at end of file
+21. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git checkout 897bdb1aaa1f6dfcaad8ff4f9fcd694a95e6a34a
+Note: switching to '897bdb1aaa1f6dfcaad8ff4f9fcd694a95e6a34a'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 897bdb1 c3
+22. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 ((897bdb1...))
+	$ git checkout master
+Previous HEAD position was 897bdb1 c3
+Switched to branch 'master'
+23. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+24. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git add README.md
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   README.md
+25. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+$ git reset
+Unstaged changes after reset:
+M       README.md
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+26. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ mkdir Skarb
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2 (master)
+	$ cd skarb
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2/skarb (master)
+	$ touch Rubin.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2/skarb (master)
+	$ touch Diament.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2/skarb (master)
+	$ touch Szafir.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2/skarb (master)
+	$ git add *.txt
+27. -----------------------------------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj 2/Lab02/repo2/skarb (master)
+	$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Diament.txt
+        new file:   Rubin.txt
+        new file:   Szafir.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ../README.md
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,303 @@
+# depslib dependency file v1.0
+1651684997 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	"Konto.h"
+	"Klient.h"
+	"Baza.h"
+	"Wlasciciel.h"
+	"Towar.h"
+	"Hulajnoga.h"
+	"Rower.h"
+	"FirmaZaopatrzeniowa.h"
+	<tuple>
+
+1651594993 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\konto.cpp
+	"Konto.h"
+
+1651594993 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\konto.h
+
+1651599029 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\towar.cpp
+	"Towar.h"
+	<string>
+
+1651599029 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\towar.h
+	<string>
+
+1651681762 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\firmazaopatrzeniowa.cpp
+	"FirmaZaopatrzeniowa.h"
+	<string>
+	"Baza.h"
+	"Konto.h"
+	<tuple>
+
+1651681766 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\firmazaopatrzeniowa.h
+	"Towar.h"
+	<string>
+	"Baza.h"
+	"Konto.h"
+	<tuple>
+
+1651667232 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\pracownik.cpp
+	"Pracownik.h"
+	<string>
+	"Baza.h"
+	"Konto.h"
+
+1651670298 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\pracownik.h
+	<string>
+	"Baza.h"
+	"Konto.h"
+
+1651683539 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\baza.cpp
+	"Baza.h"
+	"Towar.h"
+	"Rower.h"
+	"Hulajnoga.h"
+	<iostream>
+	<string>
+	<map>
+	"Konto.h"
+
+1651683539 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\baza.h
+	"Towar.h"
+	"Konto.h"
+	<string>
+	<vector>
+	<tuple>
+
+1651681972 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\klient.cpp
+	"Klient.h"
+	"Baza.h"
+	"Sklepikarz.h"
+	"Serwisant.h"
+	<string>
+	<vector>
+	<tuple>
+	<iostream>
+
+1651681972 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\klient.h
+	"Baza.h"
+	"Wlasciciel.h"
+	<String>
+
+1651684469 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\wlasciciel.cpp
+	"Wlasciciel.h"
+	"Baza.h"
+	"Konto.h"
+	"Towar.h"
+	"Serwisant.h"
+	"Sklepikarz.h"
+	<string>
+	<iostream>
+
+1651684153 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\wlasciciel.h
+	"Baza.h"
+	"Konto.h"
+	"Pracownik.h"
+	"historiatransakcji.h"
+	<string>
+	<vector>
+
+1651597184 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\hulajnoga.h
+	"Towar.h"
+	<string>
+
+1651597448 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\rower.h
+	"Towar.h"
+
+1651599204 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\hulajnoga.cpp
+	"Towar.h"
+	<string>
+	"Hulajnoga.h"
+
+1651597448 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\rower.cpp
+	"Towar.h"
+	<string>
+	"Rower.h"
+
+1651672565 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\serwisant.cpp
+	"Pracownik.h"
+	<string>
+	"Serwisant.h"
+	"Baza.h"
+	"Konto.h"
+	<tuple>
+
+1651681592 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\serwisant.h
+	"Pracownik.h"
+	"Baza.h"
+	"Konto.h"
+
+1651681571 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\sklepikarz.cpp
+	"Pracownik.h"
+	<string>
+	"Sklepikarz.h"
+	"Baza.h"
+	"Konto.h"
+	<tuple>
+
+1651681571 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\sklepikarz.h
+	"Pracownik.h"
+	"Baza.h"
+	"Konto.h"
+
+1651681762 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\firmazaopatrzeniowa.cpp
+	"FirmaZaopatrzeniowa.h"
+	<string>
+	"Baza.h"
+	"Konto.h"
+	<tuple>
+
+1651681766 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\firmazaopatrzeniowa.h
+	"Towar.h"
+	<string>
+	"Baza.h"
+	"Konto.h"
+	<tuple>
+
+1651599029 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\towar.h
+	<string>
+
+1651599204 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\hulajnoga.cpp
+	"Towar.h"
+	<string>
+	"Hulajnoga.h"
+
+1651597184 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\hulajnoga.h
+	"Towar.h"
+	<string>
+
+1651681972 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\klient.cpp
+	"Klient.h"
+	"Baza.h"
+	"Sklepikarz.h"
+	"Serwisant.h"
+	<string>
+	<vector>
+	<tuple>
+	<iostream>
+
+1651681972 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\klient.h
+	"Baza.h"
+	"Wlasciciel.h"
+	<String>
+
+1651683539 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\baza.h
+	"Towar.h"
+	"Konto.h"
+	<string>
+	<vector>
+	<tuple>
+
+1651594993 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\konto.h
+
+1651684153 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\wlasciciel.h
+	"Baza.h"
+	"Konto.h"
+	"Pracownik.h"
+	"historiatransakcji.h"
+	<string>
+	<vector>
+
+1651670298 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\pracownik.h
+	<string>
+	"Baza.h"
+	"Konto.h"
+
+1651594993 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\konto.cpp
+	"Konto.h"
+
+1651683769 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	"Konto.h"
+	"Klient.h"
+	"Baza.h"
+	"Wlasciciel.h"
+	"Towar.h"
+	"Hulajnoga.h"
+	"Rower.h"
+	"FirmaZaopatrzeniowa.h"
+	<tuple>
+
+1651597448 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\rower.h
+	"Towar.h"
+
+1651667232 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\pracownik.cpp
+	"Pracownik.h"
+	<string>
+	"Baza.h"
+	"Konto.h"
+
+1651597448 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\rower.cpp
+	"Towar.h"
+	<string>
+	"Rower.h"
+
+1651672565 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\serwisant.cpp
+	"Pracownik.h"
+	<string>
+	"Serwisant.h"
+	"Baza.h"
+	"Konto.h"
+	<tuple>
+
+1651681592 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\serwisant.h
+	"Pracownik.h"
+	"Baza.h"
+	"Konto.h"
+
+1651681571 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\sklepikarz.cpp
+	"Pracownik.h"
+	<string>
+	"Sklepikarz.h"
+	"Baza.h"
+	"Konto.h"
+	<tuple>
+
+1651681571 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\sklepikarz.h
+	"Pracownik.h"
+	"Baza.h"
+	"Konto.h"
+
+1651599029 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\towar.cpp
+	"Towar.h"
+	<string>
+
+1651684469 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\wlasciciel.cpp
+	"Wlasciciel.h"
+	"Baza.h"
+	"Konto.h"
+	"Towar.h"
+	"Serwisant.h"
+	"Sklepikarz.h"
+	<string>
+	<iostream>
+
+1651683539 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\baza.cpp
+	"Baza.h"
+	"Towar.h"
+	"Rower.h"
+	"Hulajnoga.h"
+	<iostream>
+	<string>
+	<map>
+	"Konto.h"
+
+1651684477 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\historiatransakcji.cpp
+	"historiatransakcji.h"
+	<string>
+
+1651684469 c:\users\popso\onedrive\pulpit\studia\sem4\uml\nowy folder\projekt\historiatransakcji.h
+	<string>
+
+1651684477 source:c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\historiatransakcji.cpp
+	"historiatransakcji.h"
+	<string>
+
+1651684469 c:\users\popso\onedrive\pulpit\studia\sem4\uml\projekt\historiatransakcji.h
+	<string>
+

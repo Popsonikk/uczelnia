@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1653569697 source:c:\users\popso\onedrive\pulpit\studia\sem4\algosy\graham\main.cpp
+	<iostream>
+	<vector>
+	<cmath>
+	<algorithm>
+	<iomanip>
+

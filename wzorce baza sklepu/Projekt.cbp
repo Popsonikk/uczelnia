@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Projekt" />
+		<Option pch_mode="2" />
+		<Option compiler="mingw" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Projekt" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="mingw" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Projekt" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="mingw" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Baza.cpp" />
+		<Unit filename="Baza.h" />
+		<Unit filename="FirmaZaopatrzeniowa.cpp" />
+		<Unit filename="FirmaZaopatrzeniowa.h" />
+		<Unit filename="Hulajnoga.cpp" />
+		<Unit filename="Hulajnoga.h" />
+		<Unit filename="Klient.cpp" />
+		<Unit filename="Klient.h" />
+		<Unit filename="Konto.cpp" />
+		<Unit filename="Konto.h" />
+		<Unit filename="Pracownik.cpp" />
+		<Unit filename="Pracownik.h" />
+		<Unit filename="Rower.cpp" />
+		<Unit filename="Rower.h" />
+		<Unit filename="Serwisant.cpp" />
+		<Unit filename="Serwisant.h" />
+		<Unit filename="Sklepikarz.cpp" />
+		<Unit filename="Sklepikarz.h" />
+		<Unit filename="Towar.cpp" />
+		<Unit filename="Towar.h" />
+		<Unit filename="Wlasciciel.cpp" />
+		<Unit filename="Wlasciciel.h" />
+		<Unit filename="historiatransakcji.cpp" />
+		<Unit filename="historiatransakcji.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

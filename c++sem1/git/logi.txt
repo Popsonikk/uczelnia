@@ -1,0 +1,491 @@
+Założyłem 2 projekty na gitlabie, Kontrola2 była do nauki właściwym do ocenienia jest kontrola
+
+3.---------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3
+	$ mkdir -p Lab02/repo1
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3
+	$ cd Lab02/repo1
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1
+	$ git clone https://umcs.schneiderp.ovh/patryk.popek/kontrola
+Cloning into 'kontrola'...
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+
+4.--------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1
+	$ cd kontrola
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ touch smile.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git add smile.txt
+
+
+5.---------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git commit -m "Add smile.txt"
+[main bd2a085] Add smile.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 smile.txt
+
+6.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git push -u origin main
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 284 bytes | 94.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   3b2dd78..bd2a085  main -> main
+branch 'main' set up to track 'origin/main'.
+
+7.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ echo "Joke">smile.txt
+
+
+8.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git add smile.txt
+warning: in the working copy of 'smile.txt', LF will be replaced by CRLF the next time Git touches it
+
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+		$ git commit -m "Add text Joke to file smile.txt"
+[main 5cb6d25] Add text Joke to file smile.txt
+ 1 file changed, 1 insertion(+)
+
+9.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ touch first.txt second.txt
+
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git add *.txt
+
+
+10.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git commit -m "Add two empty files: first.txt and second.txt"
+[main 16bfe11] Add two empty files: first.txt and second.txt
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 first.txt
+ create mode 100644 second.txt
+
+11.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git push -u origin main
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 540 bytes | 540.00 KiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+To https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   bd2a085..16bfe11  main -> main
+branch 'main' set up to track 'origin/main'.
+
+12.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02
+	$ mkdir repo2
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02
+	$ cd repo2
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2
+	$ git clone https://umcs.schneiderp.ovh/patryk.popek/kontrola
+Cloning into 'kontrola'...
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 11 (delta 1), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (11/11), done.
+Resolving deltas: 100% (1/1), done.
+
+13.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2
+	$ cd kontrola
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ mkdir zdalne
+
+14.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git remote>zdalne/repos.txt
+
+15.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git add zdalne/repos.txt
+warning: in the working copy of 'zdalne/repos.txt', LF will be replaced by CRLF the next time Git touches it
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git commit -m "repos.txt"
+[main af6ea8a] repos.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 zdalne/repos.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git push -u origin main
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 322 bytes | 107.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+To https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   16bfe11..af6ea8a  main -> main
+branch 'main' set up to track 'origin/main'.
+
+
+16.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02
+	$ cd repo1/kontrola
+
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git pull
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 302 bytes | 8.00 KiB/s, done.
+From https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   16bfe11..af6ea8a  main       -> origin/main
+Updating 16bfe11..af6ea8a
+Fast-forward
+ zdalne/repos.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 zdalne/repos.txt
+
+17.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ ls -l zdalne>>zdalne/prepos.txt
+
+18.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git remote >>zdalne/prepos.txt
+
+19.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git add zdalne/prepos.txt
+warning: in the working copy of 'zdalne/prepos.txt', LF will be replaced by CRLF the next time Git touches it
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git commit -m "prepos.txt"
+[main 04120ba] prepos.txt
+ 1 file changed, 4 insertions(+)
+ create mode 100644 zdalne/prepos.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git push -u origin main
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 407 bytes | 135.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+To https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   af6ea8a..04120ba  main -> main
+branch 'main' set up to track 'origin/main'.
+
+
+20.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02
+	$ cd repo2/kontrola
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git pull
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 387 bytes | 10.00 KiB/s, done.
+From https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   af6ea8a..04120ba  main       -> origin/main
+Updating af6ea8a..04120ba
+Fast-forward
+ zdalne/prepos.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+ create mode 100644 zdalne/prepos.txt
+
+
+
+21.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ touch toignore.txt
+
+22.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git status>>toignore.txt
+
+
+23.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ touch .gitignore
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git add -A
+warning: in the working copy of 'toignore.txt', LF will be replaced by CRLF the next time Git touches it
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git commit -m "create .gitignore"
+[main 8ff6986] create .gitignore
+ 2 files changed, 8 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 toignore.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ echo "toignore.txt">>.gitignore
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+24.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ touch zdalne/one.pdf zdalne/two.txt zdalne/three.png
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git add -A zdalne/
+
+25.-----------------------------------------------------------------------------------
+
+capopso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ echo "*.png">>.gitignore
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ echo "*.pdf">>.gitignore
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git add .gitignore
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git commit -m "Add file to ignore typical image files and pdfs"
+[main c45b846] Add file to ignore typical image files and pdfs
+ 4 files changed, 3 insertions(+)
+ create mode 100644 zdalne/one.pdf
+ create mode 100644 zdalne/three.png
+ create mode 100644 zdalne/two.txt
+
+26.-----------------------------------------------------------------------------------
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ cat .gitignore
+toignore.txt
+*.png
+*.pdf
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ touch test.pdf test.png
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git rm test.pdf
+fatal: pathspec 'test.pdf' did not match any files
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ rm test.pdf
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ rm test.png
+
+27.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git rm zdalne/two.txt
+rm 'zdalne/two.txt'
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    zdalne/two.txt
+
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git commit -m "Del files <...>"
+[main 567a961] Del files <...>
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 zdalne/two.txt
+
+28.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ echo "linia1">> zdalne/merge.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git add zdalne/merge.txt
+warning: in the working copy of 'zdalne/merge.txt', LF will be replaced by CRLF the next time Git touches it
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git commit -m "merge.txt"
+[main d2b08f3] merge.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 zdalne/merge.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git push -u origin main
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+Enumerating objects: 16, done.
+Counting objects: 100% (16/16), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (14/14), 1.46 KiB | 165.00 KiB/s, done.
+Total 14 (delta 5), reused 0 (delta 0), pack-reused 0
+To https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   04120ba..d2b08f3  main -> main
+branch 'main' set up to track 'origin/main'.
+
+29.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02
+	$ cd repo1/kontrola
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab03/repo1/kontrola (main)
+	$ git pull
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+remote: Enumerating objects: 16, done.
+remote: Counting objects: 100% (16/16), done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 14 (delta 5), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (14/14), 1.43 KiB | 27.00 KiB/s, done.
+From https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   659f959..fece056  main       -> origin/main
+Updating 659f959..fece056
+Fast-forward
+ .gitignore       | 3 +++
+ toignore.txt     | 8 ++++++++
+ zdalne/merge.txt | 1 +
+ zdalne/one.pdf   | 0
+ zdalne/three.png | 0
+ 5 files changed, 12 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 toignore.txt
+ create mode 100644 zdalne/merge.txt
+ create mode 100644 zdalne/one.pdf
+ create mode 100644 zdalne/three.png
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ touch zdalne/merge2.txt
+
+30.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ echo "linia1">>zdalne/merge2.txt
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git add zdalne/merge2.txt
+warning: in the working copy of 'zdalne/merge2.txt', LF will be replaced by CRLF the next time Git touches it
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git commit -m "Add file merge2.txt"
+[main 0490d74] Add file merge2.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 zdalne/merge2.txt
+
+31.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo1/kontrola (main)
+	$ git push -u origin main
+$ git push -u origin main
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 300 bytes | 300.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+To https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   fece056..de11910  main -> main
+branch 'main' set up to track 'origin/main'.
+
+
+32.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02
+	$ cd repo2/kontrola
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git pull
+$ git pull
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 280 bytes | 13.00 KiB/s, done.
+From https://umcs.schneiderp.ovh/patryk.popek/kontrola
+   fece056..de11910  main       -> origin/main
+Updating fece056..de11910
+Fast-forward
+ zdalne/merge2.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 zdalne/merge2.txt
+
+33.-----------------------------------------------------------------------------------
+
+popso@LAPTOP-I4F08N29 MINGW64 ~/OneDrive/Pulpit/studia/sem 5/git/zaj3/Lab02/repo2/kontrola (main)
+	$ git push -u origin main
+warning: redirecting to https://umcs.schneiderp.ovh/patryk.popek/kontrola.git/
+Everything up-to-date
+branch 'main' set up to track 'origin/main'.
+
+
+
+

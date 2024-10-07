@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1611748874 source:c:\users\popso\onedrive\pulpit\progrmowanie\laboratoria\lab13\zad3\main.cpp
+	<iostream>
+	<thread>
+	<chrono>
+	"Person.h"
+
+1611748523 c:\users\popso\onedrive\pulpit\progrmowanie\laboratoria\lab13\zad3\person.h
+	<string>
+
+1611748861 source:c:\users\popso\onedrive\pulpit\progrmowanie\laboratoria\lab13\zad3\person.cpp
+	"Person.h"
+	<iostream>
+

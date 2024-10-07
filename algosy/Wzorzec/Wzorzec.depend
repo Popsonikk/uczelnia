@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1651750052 source:c:\users\popso\onedrive\pulpit\studia\sem4\algosy\wzorzec\main.cpp
+	<iostream>
+	<vector>
+	<cmath>
+

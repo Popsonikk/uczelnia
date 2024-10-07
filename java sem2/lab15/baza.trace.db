@@ -1,0 +1,4 @@
+2021-06-16 12:21:46 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "INSER[*] INTO CLIENT VALUES(1,'siema@tak','patryk')"; oczekiwano "INSERT"
+Syntax error in SQL statement "INSER[*] INTO CLIENT VALUES(1,'siema@tak','patryk')"; expected "INSERT"; SQL statement:
+INSER INTO CLIENT VALUES(1,'siema@tak','patryk') [42001-200]

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1647631120 source:c:\users\popso\onedrive\pulpit\studia\sem4\algosy\alg2\main.cpp
+	<iostream>
+	<list>
+	<queue>
+
