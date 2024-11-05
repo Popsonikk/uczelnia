@@ -16,7 +16,7 @@ int main()
     #pragma omp parallel num_threads(threads_num)
     {
         int index=omp_get_thread_num();
-        #pragma omp for
+                 #pragma omp for
         for(int i=1;i<ilosc;i++)
             p[index]+=f(a+h*i);
         for(int i =(threads_num/2);i>0;i/=2) 
